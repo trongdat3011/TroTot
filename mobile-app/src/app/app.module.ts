@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { TabsPage, HomePage, SearchPage, SavedPage } from '../pages/pages';
+import { TabsPage, HomePage, SearchPage, SavedPage, ProfilePage} from '../pages/pages';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { TabsPage, HomePage, SearchPage, SavedPage } from '../pages/pages';
     TabsPage,
     HomePage,
     SearchPage,
-    SavedPage
+    SavedPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -25,7 +26,8 @@ import { TabsPage, HomePage, SearchPage, SavedPage } from '../pages/pages';
     TabsPage,
     HomePage,
     SearchPage,
-    SavedPage
+    SavedPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
