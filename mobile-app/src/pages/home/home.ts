@@ -1,14 +1,27 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
-
+import { LoadingController, NavController } from 'ionic-angular';
+import { DemoAPI } from '../../providers/providers';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController) {
-
+  errorMessage: String;
+  houses: any[];
+  constructor(
+    public navCtrl: NavController, 
+    public demoAPI: DemoAPI, 
+    public loadingController: LoadingController) {}
+  
+  ionViewDidLoad(){
+    let loader = this.loadingController.create({
+      content: 'Getting data...',
+      dismissOnPageChange: true
+    })
+    loader.present();
+    this.demoAPI.getHousesData()
+        .subscribe(
+          houses => this.houses = houses
+        );
   }
-
 }

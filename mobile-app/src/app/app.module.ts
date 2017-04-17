@@ -3,10 +3,10 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
+import { HttpModule} from '@angular/http';
 import { MyApp } from './app.component';
 import { TabsPage, HomePage, SearchPage, SavedPage, ProfilePage} from '../pages/pages';
-
+import { DemoAPI } from '../providers/providers'
 @NgModule({
   declarations: [
     MyApp,
@@ -18,7 +18,8 @@ import { TabsPage, HomePage, SearchPage, SavedPage, ProfilePage} from '../pages/
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -30,6 +31,7 @@ import { TabsPage, HomePage, SearchPage, SavedPage, ProfilePage} from '../pages/
     ProfilePage
   ],
   providers: [
+    DemoAPI,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
