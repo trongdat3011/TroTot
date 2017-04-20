@@ -15,7 +15,7 @@ export class DemoAPI {
     let options = new RequestOptions();
     let params = new URLSearchParams();
     params.set('client_id', '3092nxybyb0otqw18e8nh5nty');
-    params.set('locale', 'en-US');
+    params.set('locale', 'vnm');
     params.set('currency', 'USD');
     options.search = params;
     return this.http.get(this.baseUrl, options)
