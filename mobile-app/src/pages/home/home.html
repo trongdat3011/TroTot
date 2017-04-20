@@ -7,5 +7,17 @@
 </ion-header>
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-card *ngFor='let house of houses'>
+      <img src='{{house.listing.picture_url}}' />
+      <ion-card-content>
+        <ion-card-title>
+          {{house.listing.name}}
+        </ion-card-title>
+        <p>
+          The most popular industrial group ever, and largely responsible for bringing the music to a mass audience.
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>

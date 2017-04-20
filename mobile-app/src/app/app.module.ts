@@ -1,20 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-import { HttpModule} from '@angular/http';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { TabsPage, HomePage, SearchPage, SavedPage, ProfilePage} from '../pages/pages';
-import { DemoAPI } from '../providers/providers'
+
+import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage } from '../pages/pages';
+
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { DemoAPI } from '../providers/providers';
+import { HttpModule} from '@angular/http';
 @NgModule({
   declarations: [
     MyApp,
-    TabsPage,
     HomePage,
+    ProfilePage,
     SearchPage,
     SavedPage,
-    ProfilePage
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -24,11 +26,11 @@ import { DemoAPI } from '../providers/providers'
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    TabsPage,
     HomePage,
+    ProfilePage,
     SearchPage,
     SavedPage,
-    ProfilePage
+    TabsPage
   ],
   providers: [
     DemoAPI,

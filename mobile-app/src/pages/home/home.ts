@@ -15,13 +15,16 @@ export class HomePage {
   
   ionViewDidLoad(){
     let loader = this.loadingController.create({
-      content: 'Getting data...',
-      dismissOnPageChange: true
+      content: 'Getting data...'
     })
     loader.present();
     this.demoAPI.getHousesData()
         .subscribe(
-          houses => this.houses = houses
+          houses => {
+            this.houses = houses;
+            loader.dismiss();
+            console.log(houses.length)
+          }
         );
   }
 }
