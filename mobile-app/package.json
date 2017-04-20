@@ -37,8 +37,8 @@
     "cordova-plugin-console",
     "cordova-plugin-statusbar",
     "cordova-plugin-device",
-    "cordova-plugin-splashscreen",
-    "ionic-plugin-keyboard"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [],
   "description": "mobile-app: An Ionic project"

@@ -1,14 +1,32 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Home
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="main-content">
+  <ion-list>
+    <ion-card *ngFor='let house of houses'>
+
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="{{house.listing.primary_host.picture_url}}" />
+        </ion-avatar>
+        <h2>{{house.listing.primary_host.first_name}}</h2>
+        <p>{{house.listing.public_address}}</p>
+      </ion-item>
+
+      <img src='{{house.listing.picture_url}}' />
+      <ion-card-content>
+        <ion-card-title>
+          {{house.listing.name}}
+        </ion-card-title>
+        <p>
+          
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>
