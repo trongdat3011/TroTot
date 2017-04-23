@@ -20,7 +20,10 @@
 
       <img src='{{house.listing.picture_url}}' />
       <ion-card-content>
-        <img src="{{getRatingImg(house.listing.star_rating)}}" />
+        <ion-item class='no-padding'>
+          <img src="{{getRatingImg(house.listing.star_rating)}}" item-left/>
+          <ion-icon name="pricetags" color='secondary'>${{house.pricing_quote.nightly_price}}</ion-icon>
+        </ion-item>
         <ion-card-title>
           {{house.listing.name}}
         </ion-card-title>
