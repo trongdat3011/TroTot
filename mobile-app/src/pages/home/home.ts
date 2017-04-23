@@ -27,4 +27,12 @@ export class HomePage {
           }
         );
   }
+
+  getRatingImg(rating: number) {
+    let res = '../../assets/star/small_' + Math.round(rating - 0.5);
+    if (Math.round(rating) != rating)
+      res += '_half';
+    res += '.png';
+    return res;
+  }
 }
