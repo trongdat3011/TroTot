@@ -18,5 +18,10 @@
 
 
 <ion-content padding>
-  <p>really! </p>
+  <ion-slides pager>
+    <ion-slide *ngFor="let imgURL of house.listing.picture_urls">
+      <img [src]="imgURL">
+    </ion-slide> 
+  </ion-slides>
+  <ion-title>{{house.listing.name}}</ion-title>
 </ion-content>
