@@ -20,12 +20,10 @@
 
       <img src='{{house.listing.picture_url}}' />
       <ion-card-content>
+        <img src="{{getRatingImg(house.listing.star_rating)}}" />
         <ion-card-title>
           {{house.listing.name}}
         </ion-card-title>
-        <p>
-          
-        </p>
       </ion-card-content>
     </ion-card>
   </ion-list>
