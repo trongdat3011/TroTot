@@ -8,7 +8,7 @@
 
 <ion-content padding class="main-content">
   <ion-list>
-    <ion-card *ngFor='let house of houses'>
+    <ion-card *ngFor='let house of houses' (click)="houseTapped($event, house)">
 
       <ion-item>
         <ion-avatar item-left>

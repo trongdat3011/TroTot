@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage } from '../pages/pages';
+import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, HouseInfoPage } from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,7 +16,8 @@ import { HttpModule} from '@angular/http';
     ProfilePage,
     SearchPage,
     SavedPage,
-    TabsPage
+    TabsPage,
+    HouseInfoPage
   ],
   imports: [
     BrowserModule,
@@ -30,7 +31,8 @@ import { HttpModule} from '@angular/http';
     ProfilePage,
     SearchPage,
     SavedPage,
-    TabsPage
+    TabsPage,
+    HouseInfoPage
   ],
   providers: [
     DemoAPI,

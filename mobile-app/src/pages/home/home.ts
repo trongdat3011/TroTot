@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoadingController, NavController } from 'ionic-angular';
 import { DemoAPI } from '../../providers/providers';
+import { HouseInfoPage } from '../pages';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -34,5 +35,9 @@ export class HomePage {
       res += '_half';
     res += '.png';
     return res;
+  }
+
+  houseTapped($event, item) {
+    this.navCtrl.push(HouseInfoPage, item);
   }
 }
