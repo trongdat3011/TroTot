@@ -6,28 +6,23 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="main-content">
+<ion-content class="main-content">
   <ion-list>
-    <ion-card *ngFor='let house of houses' (click)="houseTapped($event, house)">
-
-      <ion-item>
-        <ion-avatar item-left>
-          <img src="{{house.listing.primary_host.picture_url}}" />
-        </ion-avatar>
-        <h2>{{house.listing.primary_host.first_name}}</h2>
-        <p>{{house.listing.public_address}}</p>
-      </ion-item>
-
-      <img src='{{house.listing.picture_url}}' />
-      <ion-card-content>
-        <ion-item class='no-padding'>
-          <img src="{{getRatingImg(house.listing.star_rating)}}" item-left/>
-          <ion-icon name="pricetags" color='secondary'>${{house.pricing_quote.nightly_price}}</ion-icon>
-        </ion-item>
-        <ion-card-title>
-          {{house.listing.name}}
-        </ion-card-title>
-      </ion-card-content>
-    </ion-card>
+    <ion-row *ngFor='let row of grid'>
+      <ion-col col-6 *ngFor='let house of row' (click)="houseTapped($event, house)">
+        <ion-card class='no-padding no-margin'>
+          <img src='{{house.listing.picture_url}}' />
+          <ion-card-content>
+            <p>
+              <span>${{house.pricing_quote.nightly_price}}</span> {{house.listing.name}}
+            </p>
+            <ion-item class='no-padding no-margin'>
+              <img src="{{getRatingImg(house.listing.star_rating)}}" item-left/>
+              <p>{{house.listing.reviews_count}} reviews</p>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-list>
 </ion-content>

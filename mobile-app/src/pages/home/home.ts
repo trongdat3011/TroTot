@@ -8,7 +8,7 @@ import { HouseInfoPage } from '../pages';
 })
 export class HomePage {
   errorMessage: String;
-  houses: any[];
+  grid: any[];
   constructor(
     public navCtrl: NavController, 
     public demoAPI: DemoAPI, 
@@ -22,9 +22,20 @@ export class HomePage {
     this.demoAPI.getHousesData()
         .subscribe(
           houses => {
-            this.houses = houses;
+            let rowNum = 0;
+            this.grid = [];
+            for (let i = 0; i < houses.length; i += 2) {
+              this.grid.push([]);
+              if (houses[i]) {
+                this.grid[rowNum].push(houses[i]);
+              }
+              if (houses[i+1]) {
+                this.grid[rowNum].push(houses[i + 1]);
+              }
+              rowNum++;
+            }
             loader.dismiss();
-            console.log(houses.length)
+            //console.log(houses.length)
           }
         );
   }

@@ -1,23 +1,29 @@
 page-home {
     ion-item {
         background-color: #fff;
+        p {
+            font-size: 0.7em !important;
+            color: #387ef5 !important;
+        }
     }
     ion-card {
         background-color: #fff;
-        width: 100%;
-        margin: 0;
-        margin-bottom: 25px;
+        width: 100% !important;
         position: relative;
-        top: -30px;
-        
     }
     ion-card-content {
         img {
-            height: 30%;
-            width: 30%;
+            height: 40%;
+            width: 40%;
+        }
+        span {
+            font-weight: bold;
         }
     }
     .no-padding {
         padding: 0px !important;
+    }
+    .no-margin {
+        margin: 0px !important;
     }
 }
