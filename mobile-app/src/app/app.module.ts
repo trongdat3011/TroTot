@@ -4,10 +4,10 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, HouseInfoPage } from '../pages/pages';
-
+import { Storage } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DemoAPI } from '../providers/providers';
+import { DemoAPI, UserSettings } from '../providers/providers';
 import { HttpModule} from '@angular/http';
 @NgModule({
   declarations: [
@@ -38,6 +38,8 @@ import { HttpModule} from '@angular/http';
     DemoAPI,
     StatusBar,
     SplashScreen,
+    Storage,
+    UserSettings,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

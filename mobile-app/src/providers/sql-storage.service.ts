@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { SQLite } from 'ionic-native';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 
 @Injectable()
 export class SqlStorage {
-    public db: SQLite;
+    public db: SQLiteObject;
+    public sqlite: SQLite;
 
     constructor() { }
 
@@ -37,15 +38,17 @@ export class SqlStorage {
         });
     }
     
-    /**
-     * Should be called after deviceready event is fired
-     */
     initializeDatabase(){
-        this.db = new SQLite();
-        return this.db.openDatabase({ name: 'data.db', location: 'default' }).then((db) => {
+        return this.sqlite.create({
+            name: 'data.db',
+            location: 'default'
+        })
+        .then((db: SQLiteObject) => {
+            this.db = db;
             return this.db.executeSql('CREATE TABLE IF NOT EXISTS kv (key text primary key, value text)', []).then(data => {
                 console.log('**after CREATE TABLE check', data);
-            });
-        });
+            }); 
+            
+        })
     }
 }
