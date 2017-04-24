@@ -1,6 +1,6 @@
 const Controller = require('../../lib/controller');
-const userFacade  = require('./user-facade');
+const userSchema  = require('./schema');
 
 class UserController extends Controller {}
 
-module.exports = new UserController(userFacade);
+module.exports = new UserController(userSchema);

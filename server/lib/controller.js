@@ -1,53 +1,41 @@
 class Controller {
-  constructor(facade) {
-    this.facade = facade;
+  constructor(Schema) {
+    this.Schema = Schema;
   }
-
   find(req, res, next) {
-    return this.facade.find(req.query)
-    .then(collection => res.status(200).json(collection))
-    .catch(err => next(err));
+    this.Schema.find().exec( (err, things) => {
+      if (err) res.send(err);
+      res.json(things);
+    });
   }
-
-  findOne(req, res, next) {
-    return this.facade.findOne(req.query)
-    .then(doc => res.status(200).json(doc))
-    .catch(err => next(err));
-  }
-
   findById(req, res, next) {
-    return this.facade.findById(req.params.id)
-    .then((doc) => {
-      if (!doc) { return res.status(404).end(); }
-      return res.status(200).json(doc);
-    })
-    .catch(err => next(err));
+    this.Schema.findById(req.params.id).exec( (err, thing) => {
+      if (err) res.send(err);
+      if (thing) res.json(thing);
+      else res.json('not found');
+    });
   }
-
   create(req, res, next) {
-    this.facade.create(req.body)
-    .then(doc => res.status(201).json(doc))
-    .catch(err => next(err));
+    const schema = new this.Schema(req.body);
+    schema.save( (err) => {
+      if (err) res.send(err);
+      res.json({ message: 'Successful!' });
+    });
   }
-
   update(req, res, next) {
     const conditions = { _id: req.params.id };
-
-    this.facade.update(conditions, req.body)
-    .then((doc) => {
-      if (!doc) { return res.status(404).end(); }
-      return res.status(200).json(doc);
-    })
-    .catch(err => next(err));
-  }
-
-  remove(req, res, next) {
-    this.facade.remove(req.params.id)
-    .then((doc) => {
+    this.Schema.update(conditions, req.body).exec( (err, doc) => {
+      if (err) res.send(err);
       if (!doc) { return res.status(404).end(); }
       return res.status(204).end();
-    })
-    .catch(err => next(err));
+    });
+  }
+  remove(req, res, next) {
+    this.Schema.findByIdAndRemove(req.params.id).exec( (err, doc) => {
+      if (err) res.send(err);
+      if (!doc) { return res.status(404).end(); }
+      return res.status(204).end();
+    });
   }
 
 }

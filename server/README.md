@@ -1,18 +1,16 @@
 # tro-tot
 
-[![generator-api](https://img.shields.io/badge/built%20with-generator--api-green.svg)](https://github.com/ndelvalle/generator-api)
-
 tro-tot api server
 
 
 
 ## dependencies
 
-node 6.3.x or later and mongodb
+node 6.x.x or later (for native ES6 support) and mongodb
 
 ## developing
 
-run mongodd on a separated terminal instance:
+run mongod on a separated terminal instance:
 
 ```
 mongod
@@ -21,21 +19,8 @@ mongod
 run the app:
 
 ```bash
-npm run dev
+npm install && npm run dev
 ```
 
 the app runs on `localhost:8080`
 
-## production
-
-_you'll likely be consuming mongodb as a service, so make sure you set the env var to connect to it._
-
-```bash
-npm start
-```
-
-
-
-
-
---------------------------------------------------------------------------------
