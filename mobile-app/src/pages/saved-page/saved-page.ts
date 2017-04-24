@@ -6,9 +6,11 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'saved-page.html',
 })
 export class SavedPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  favorites: any[];
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams
+    ) {}
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SavedPage');
