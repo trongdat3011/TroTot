@@ -4,11 +4,11 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, HouseInfoPage } from '../pages/pages';
-import { Storage } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DemoAPI, UserSettings } from '../providers/providers';
+import { DemoAPI } from '../providers/providers';
 import { HttpModule} from '@angular/http';
+import { IonicStorageModule } from '@ionic/storage'
 @NgModule({
   declarations: [
     MyApp,
@@ -22,7 +22,8 @@ import { HttpModule} from '@angular/http';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -38,8 +39,6 @@ import { HttpModule} from '@angular/http';
     DemoAPI,
     StatusBar,
     SplashScreen,
-    Storage,
-    UserSettings,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
