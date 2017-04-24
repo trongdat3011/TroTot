@@ -6,7 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, HouseInfoPage } from '../pages/pages';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DemoAPI } from '../providers/providers';
+import { DemoAPI, ProvideStorage } from '../providers/providers';
 import { HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage'
 @NgModule({
@@ -39,6 +39,7 @@ import { IonicStorageModule } from '@ionic/storage'
     DemoAPI,
     StatusBar,
     SplashScreen,
+    ProvideStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
