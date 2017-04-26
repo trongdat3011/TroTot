@@ -3,11 +3,25 @@
 TroTot
 =============
 
-A cross-platform mobile application built with Ionic 2 & Nodejs.
+A cross-platform mobile application built with Ionic 2 & Nodejs that connect people who have space to spare with those who are looking for a place to stay (so basically a worse version of airbnb :D)
 
-Group project for [Selected Topics on Technology](http://uet.vnu.edu.vn/~tqlong/2017tech/)
+Also serve as a group project for [Selected Topics on Technology](http://uet.vnu.edu.vn/~tqlong/2017tech/)
 
-  
+
+Getting started
+=============
+
+```
+insert commands to run the app
+```
+To get the app running
+
+```
+insert commands to run the api server
+```
+To get the server running
+
+
 Group members
 =============
 
