@@ -1,9 +1,10 @@
 const controller = require('./controller');
 const Router = require('express').Router;
 const router = new Router();
+const tokenChecker = require('../../lib/tokenChecker');
 
 router.route('/')
-  .get((...args) => controller.find(...args))
+  .get((...args) => controller.find(...args));
 
 router.route('/:id')
   .put((...args) => controller.update(...args))
