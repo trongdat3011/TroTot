@@ -1,6 +1,6 @@
 ![TroTot](logo.jpg)
 
-TroTot
+TroTot (Trọ Tốt)
 =============
 
 A cross-platform mobile application built with Ionic 2 & Nodejs that connect people who have space to spare with those who are looking for a place to stay (so basically a worse version of airbnb :D)
@@ -33,7 +33,7 @@ Group members
 
 4.[Đặng Thái Tuệ (co-leader)](https://github.com/meodorewan)
 
-5.[Đoàn Văn Việt (leader)](https://github.com/vietdoan)
+5.[Đoàn Văn Việt (U L T I M A T E L E A D E R)](https://github.com/vietdoan)
 
 
 
