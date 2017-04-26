@@ -16,7 +16,7 @@ mongoose.connect(config.mongo.url);
 app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(morgan('tiny'));
+app.use(morgan('dev'));
 app.use('/', routes);
 
 app.listen(config.server.port, () => {
