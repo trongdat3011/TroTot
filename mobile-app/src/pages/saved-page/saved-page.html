@@ -8,10 +8,24 @@
 
 
 <ion-content padding>
-  <ion-card *ngIf='!favorites'>
+  <ion-card *ngIf='!favorites || favorites.length == 0'>
     <ion-card-header class="my-teams-header">Nothing saved yet</ion-card-header>
     <ion-card-content>
       <p>When you see something you like, tap on the heart to save it. </p>
     </ion-card-content>
   </ion-card>
+  <ion-list>
+    <ion-card *ngFor='let house of favorites' (click)="houseTapped($event, house)">
+      <img src='{{house.listing.picture_url}}' />
+      <ion-card-content>
+        <p>
+          <span>${{house.pricing_quote.nightly_price}}</span> {{house.listing.name}}
+        </p>
+        <ion-item class='no-padding'>
+          <img src="{{getRatingImg(house.listing.star_rating)}}" item-left/>
+          <p>{{house.listing.reviews_count}} reviews</p>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
 </ion-content>

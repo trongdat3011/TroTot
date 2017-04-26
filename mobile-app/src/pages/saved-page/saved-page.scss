@@ -2,3 +2,21 @@
     font-weight: bold;
     font-size: large;
 }
+
+page-saved-page {
+    ion-card-content {
+        img {
+            height: 40%;
+            width: 40%;
+        }
+        span {
+            font-weight: bold;
+        }
+    }
+    .no-padding {
+        padding: 0px !important;
+    }
+    .no-margin {
+        margin: 0px !important;
+    }
+}
