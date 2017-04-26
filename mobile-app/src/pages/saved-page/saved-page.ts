@@ -19,7 +19,6 @@ export class SavedPage {
     this.favorites = [];
     this.provideStorage.getAllFavorites().then(favs => {
       this.favorites = favs;
-      console.log(favs)
     });
   }
 

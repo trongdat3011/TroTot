@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams , AlertController, ToastController } from 'ionic-angular';
+import { NavController, NavParams , AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { ProvideStorage } from '../../providers/providers';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 @Component({
   selector: 'page-house-info-page',
   templateUrl: 'house-info-page.html',
@@ -13,7 +15,9 @@ export class HouseInfoPage {
     public navParams: NavParams,
     public provideStorage: ProvideStorage,
     public alertController: AlertController,
-    public toastController: ToastController) {}
+    public toastController: ToastController,
+    public socialSharing: SocialSharing,
+    public loadingController: LoadingController) {}
 
   ionViewCanEnter() {
     this.house = this.navParams.data;
@@ -52,4 +56,15 @@ export class HouseInfoPage {
       this.provideStorage.favoriteHouse(this.house); 
     }
   } 
+
+  shareImg() {
+    let loader = this.loadingController.create({
+      content: 'Processing...'
+    })
+    loader.present();
+    this.socialSharing.share('Hello', 'blah blah', this.house.listing.picture_url, 'https://www.facebook.com/vietdoan.hp')
+    .then(() => {
+      loader.dismiss();
+    });
+  }
 }

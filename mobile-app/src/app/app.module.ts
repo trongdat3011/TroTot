@@ -9,6 +9,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DemoAPI, ProvideStorage } from '../providers/providers';
 import { HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage'
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -40,6 +42,7 @@ import { IonicStorageModule } from '@ionic/storage'
     StatusBar,
     SplashScreen,
     ProvideStorage,
+    SocialSharing,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
