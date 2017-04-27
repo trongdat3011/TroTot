@@ -10,7 +10,7 @@ import { DemoAPI, ProvideStorage } from '../providers/providers';
 import { HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage'
 import { SocialSharing } from '@ionic-native/social-sharing';
-
+import { Geolocation } from '@ionic-native/geolocation';
 @NgModule({
   declarations: [
     MyApp,
@@ -43,6 +43,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     SplashScreen,
     ProvideStorage,
     SocialSharing,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
