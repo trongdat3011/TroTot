@@ -4,8 +4,8 @@ const Schema = mongoose.Schema;
 
 const houseSchema = new Schema({
   city: { type: String, require: true },
-  lat: { type: Number, min: 0, max: 180, require: true },
-  lng: { type: Number, min: 0, max: 180, require: true },
+  lat: { type: Number, min: -180, max: 180, require: true },
+  lng: { type: Number, min: -180, max: 180, require: true },
   name: { type: String, require: true },
   person_capacity: { type: Number, min: 1, require: true },
   description: { type: String, require: true },
