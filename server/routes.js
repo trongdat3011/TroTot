@@ -115,10 +115,10 @@ mainRouter
       .exec( (err, houses) => {
         if (err) return res.send(err);
         let matchedHouses = [];
-        if (req.params.radius){
+        if (req.params.radius) {
           houses.forEach( (house) => {
-            if ( distance(Number(req.query.lat), Number(req.query.lng), house.lat, house.lng) < Number(req.query.radius) ) 
-              matchedHouses.push(house);
+            if ( distance(Number(req.query.lat), Number(req.query.lng), house.lat, house.lng) < Number(req.query.radius) )
+              {matchedHouses.push(house);}
           });
         } else {
           matchedHouses = houses.map( (house) => {
@@ -126,6 +126,10 @@ mainRouter
             temp.distance = distance(Number(req.query.lat), Number(req.query.lng), house.lat, house.lng);
             return temp;
           });
+          matchedHouses.sort( (a, b) => {
+            return a.distance - b.distance;
+          });
+          matchedHouses = matchedHouses.slice(0, Math.min(matchedHouses.length, Number(req.query.limit) + 1));
         }
         res.send(matchedHouses);
       });
