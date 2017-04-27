@@ -1,5 +1,8 @@
 const jwt = require('jsonwebtoken');
 const secret = require('../config').secret;
+const admin = require('../config').admin;
+
+
 exports.tokenChecker = (req, res, next) => {
 
   // check header or url parameters or post parameters for token
@@ -22,5 +25,5 @@ exports.tokenChecker = (req, res, next) => {
   }
 };
 exports.adminChecker = (req, res, next) => {
-  if (req.decoded.username === 'trongdat3011') next();
+  if (req.decoded.username === admin) next();
 };
