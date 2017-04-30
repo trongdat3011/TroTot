@@ -11,6 +11,7 @@ import { HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Geolocation } from '@ionic-native/geolocation';
+
 @NgModule({
   declarations: [
     MyApp,

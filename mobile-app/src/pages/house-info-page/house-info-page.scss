@@ -1,6 +1,14 @@
 page-house-info-page {
+    position: absolute;
     ion-slides {
         max-height: 60%;
         margin-bottom: 10px;
     }
+    .fixed-bottom {
+        position: fixed;
+        bottom: 9%;
+        width: 92%;
+        height: 7%;
+    }
+   
 }
