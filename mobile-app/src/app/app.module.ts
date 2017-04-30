@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, HouseInfoPage } from '../pages/pages';
+import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, HouseInfoPage, MapPage} from '../pages/pages';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DemoAPI, ProvideStorage } from '../providers/providers';
@@ -11,7 +11,7 @@ import { HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { AgmCoreModule } from 'angular2-google-maps/core';
 @NgModule({
   declarations: [
     MyApp,
@@ -20,13 +20,15 @@ import { Geolocation } from '@ionic-native/geolocation';
     SearchPage,
     SavedPage,
     TabsPage,
-    HouseInfoPage
+    HouseInfoPage,
+    MapPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyBbsOlMryAHu2ESwHHSwrDBIUU7fiENNoM'})
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -36,7 +38,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SearchPage,
     SavedPage,
     TabsPage,
-    HouseInfoPage
+    HouseInfoPage,
+    MapPage
   ],
   providers: [
     DemoAPI,

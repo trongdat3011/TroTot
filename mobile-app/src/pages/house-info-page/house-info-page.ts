@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, NavController, NavParams, AlertController, ToastController, LoadingController, ActionSheetController } from 'ionic-angular';
 import { ProvideStorage } from '../../providers/providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { MapPage } from '../pages';
 declare var window;
 @Component({
   selector: 'page-house-info-page',
@@ -94,4 +95,12 @@ export class HouseInfoPage {
     actionSheet.present();
   }
 
+  mapTapped($event, item) {
+    let location = {
+      latitude: item.listing.lat,
+      longtitude: item.listing.lng,
+      name: item.listing.name
+    }
+    this.navCtrl.push(MapPage, location);
+  }
 }
