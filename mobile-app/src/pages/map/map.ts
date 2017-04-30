@@ -13,9 +13,10 @@ export class MapPage {
 
   ionViewCanEnter(){
     let location = this.navParams.data;
+    console.log(location);
     this.map = {
       lat: location.latitude,
-      lng: location.longitude,
+      lng: location.longtitude,
       zoom: 12,
       markerLabel: location.name 
     };
