@@ -7,11 +7,13 @@ declare var window: any;
 export class MapPage {
 
   map: any;
+  tarBarElement: any;
   constructor(public navParams: NavParams) {
-    
+    this.tarBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
   ionViewCanEnter(){
+    
     let location = this.navParams.data;
     console.log(location);
     this.map = {
@@ -21,6 +23,14 @@ export class MapPage {
       markerLabel: location.name 
     };
 
+  }
+
+  ionViewWillEnter() {
+    this.tarBarElement.style.display = 'none';
+  }
+
+  ionViewWillLeave() {
+    this.tarBarElement.style.display = 'flex';
   }
 
   getDirections() { 

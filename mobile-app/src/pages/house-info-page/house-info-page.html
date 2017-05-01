@@ -12,7 +12,7 @@
     </ion-buttons>
     <ion-buttons end>
       <button ion-button icon-only (click)="shareImg()">
-        <ion-icon name="share"></ion-icon>
+        <ion-icon name="md-share"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -29,34 +29,60 @@
   <ion-title>{{house.listing.name}}</ion-title>
   <ion-list no-lines>
     <ion-item>
-      <ion-icon name="calendar" item-left></ion-icon>
-      <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MMM DD, YYYY" max="2056" [(ngModel)]="conferenceDate"></ion-datetime>
+      <ion-icon name="pin" color='danger' item-left></ion-icon>
+      <p>{{house.listing.public_address}}</p>
     </ion-item>
-
     <ion-item>
-      <ion-icon name="pin" item-left></ion-icon>
-      <ion-label>Location</ion-label>
-      <ion-select>
-        <ion-option value="madison" selected>Madison, WI</ion-option>
-        <ion-option value="austin">Austin, TX</ion-option>
-        <ion-option value="chicago">Chicago, IL</ion-option>
-        <ion-option value="seattle">Seattle, WA</ion-option>
-      </ion-select>
+      <ion-icon name="ios-pricetag" color='secondary' item-left></ion-icon>
+      <p>${{house.pricing_quote.nightly_price}}</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-calculator" color="light" item-left></ion-icon>
+      <p>18m2</p>
     </ion-item>
   </ion-list>
   <hr>
-  <p (click)="mapTapped($event, house)">
-    Lorem ipsum dolor sit amet, eum habeo ridens epicuri ne, veri iuvaret ne est, mea pertinax splendide appellantur no. Eligendi recteque partiendo sed ex, vis ne aperiri pertinacia disputationi, qui postulant honestatis ea. Nonumy bonorum id mea, impetus eruditi vis ne. Nam quot antiopam iudicabit et, amet facer deterruisset eum ea. Et pro possit dolores nominati. Suas tollit docendi no mea, quas omnis sadipscing sea cu. Eu qui dicta inermis rationibus, vis propriae eloquentiam ut.
-
-Qui mazim facilisi partiendo no, case causae ad duo. His ut sale percipitur cotidieque, nulla tantas mucius per ut. Eros verterem complectitur vel ex, ex quo suas novum elaboraret, ei qui libris tincidunt. Ne dolore incorrupte sit, reque ullum expetendis no vel. Nonumes veritus fabellas ex pri, eu graeco deleniti mei.
-
-Ad molestiae efficiendi mea. Ea duis praesent accommodare vel, sea et possit nonumes, ad vis appetere splendide. Pro ex odio salutandi, at diceret iracundia per. At odio dolorem vix. Vim id latine detracto tacimates, ne libris copiosae reprimique est, vim mazim tempor scripserit ea.
-
-In pri semper partiendo expetendis, has praesent evertitur in. Ex vel vitae corpora, ea usu nostro audire laoreet. Qui epicuri detracto vivendum ei. Ea sit nonumes expetendis, at meis hendrerit posidonium mei. Nec ex viris regione, eos no hinc consulatu referrentur. Vix at congue scripta.
-
-Ex vel amet prompta. Mei cu erat justo. In idque delenit has. Usu ne simul dolor, te sea fuisset elaboraret necessitatibus.
+  <ion-title>Description</ion-title>
+  <p style="white-space: pre-line">
+    A double room in a serene apartment for rent in a historic building dating from the medieval period, located on the 3rd floor,
+    and the stairs was the ones going to the watchtower in the original building dating from the 16th century. The bathroom
+    is shared and always kept in prestine condition. \nFor breakfast you will find coffee, tea, bread, pastries, yugurt and
+    muessli etc, and this can be enjoyed on the roofteracce if the weather permits, which is also a nice place to have a
+    glass of wine after a day of sightseeing or shopping.\nOn the doorstep you will find the Picasso museum, independent
+    boutiques, art galleries, artists workshops, and this is the Borne area known for plenty of trendy bars and restaurants.
+    \nSeveral metro stations and bus stops are nearby, howewer most of the sights are within walking distance; the cathedral,
+    Santa Maria del Mar, the beaches and Las Ramblas can be reached in less than 10 minutes. \nEl Vaixell de paper (The Paper
+    Boat) - representing something so fragile yet so strong!
   </p>
+  <ion-card class="adv-map" (click)="mapTapped($event, house)">
+    <div style="position: relative">
+      <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&markers=41.384660156154446%2C2.180001899114807&size=480x320&zoom=15&client=gme-airbnbinc&channel=monorail-prod&signature=3P-iFyNCjgUjDOzc8dnPe-kB60E%3D">
+      <ion-fab right top>
+        <button ion-fab color="secondary">
+        <ion-icon name="pin"></ion-icon>
+      </button>
+      </ion-fab>
+    </div>
+  </ion-card>
+  <ion-title>House Rules</ion-title>
+  <p style="white-space: pre-line">
+    It is not about listing and endless set of rules, basically my philosophy about the house is letting my guests using their
+    common sense, being respectful, treating others as you like being treated and on top of that making the people staying
+    here comfortable and helping them to make the most of their stay with me. My priority is always the comfort and wellbeing
+    of my guests and I will go out of my way to achieve that goal.\r\nYou will be given a set of keys after the check in
+    process, giving you complete freedom to go in and out at your will."
+  </p>
+  <hr>
+  <ion-title>About Your Host</ion-title>
+  <ion-item (click)="callMenu()">
+    <ion-thumbnail item-left>
+      <img src="{{house.listing.primary_host.picture_url}}">
+    </ion-thumbnail>
+    <h2>{{house.listing.primary_host.first_name}}</h2>
+    <p>{{house.listing.public_address}}</p>
+    <p>+841234567890</p>
+    <p>Usually responds within a day</p>
+  </ion-item>
   <button ion-button block (click)="callMenu()" class='fixed-bottom'>
     ENQUIRE NOW
   </button>

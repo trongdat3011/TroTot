@@ -11,6 +11,7 @@ declare var window;
 export class HouseInfoPage {
   house: any;
   isFollowing = false;
+  tarBarElement: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -20,9 +21,12 @@ export class HouseInfoPage {
     public socialSharing: SocialSharing,
     public loadingController: LoadingController,
     public actionSheetCtrl: ActionSheetController,
-    public platform: Platform) { }
+    public platform: Platform) {
+      this.tarBarElement = document.querySelector('.tabbar.show-tabbar');  
+    }
 
   ionViewCanEnter() {
+    
     this.house = this.navParams.data;
     if (this.house.listing.picture_urls.length > 5)
       this.house.listing.picture_urls = this.house.listing.picture_urls.slice(0, 5);
@@ -30,6 +34,14 @@ export class HouseInfoPage {
       .then(val => this.isFollowing = val);
   }
 
+  ionViewWillEnter() {
+    this.tarBarElement.style.display = 'none';
+  }
+
+  ionViewWillLeave() {
+    this.tarBarElement.style.display = 'flex';
+  }
+  
   toggleFollow() {
     if (this.isFollowing) {
       let confirm = this.alertController.create({
