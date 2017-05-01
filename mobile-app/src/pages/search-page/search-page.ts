@@ -20,10 +20,7 @@ export class SearchPage {
     public demoAPI: DemoAPI) {}
 
   ionViewDidLoad() {
-    let loader = this.loadingController.create({
-      content: 'Please Wait...'
-    })
-    this.demoAPI.getHousesData().subscribe( houses => {this.houses = houses; loader.dismiss();this.loadMap();} );
+    this.demoAPI.getHousesData().subscribe( houses => {this.houses = houses; console.log(houses);this.loadMap();} );
   }
 
   createMarker(location:any) {
@@ -49,7 +46,11 @@ export class SearchPage {
     
     let img = this.houses[0].listing.picture_url;
     console.log(img);
+    let loader = this.loadingController.create({
+      content: 'Please Wait...'
+    })
     this.geolocation.getCurrentPosition().then((position) => {
+
       let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
       let mapOptions = {
         center: latLng,
@@ -59,7 +60,7 @@ export class SearchPage {
  
       this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
       this.createMarker({lat: position.coords.latitude, lng: position.coords.longitude, img:img, name:'vietdoan'});
- 
+      loader.dismiss();
     }, (err) => {
       console.log(err);
     });

@@ -19,7 +19,7 @@ export class MapPage {
     this.map = {
       lat: location.latitude,
       lng: location.longtitude,
-      zoom: 12,
+      zoom: 17,
       markerLabel: location.name 
     };
 

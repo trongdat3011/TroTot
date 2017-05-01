@@ -26,6 +26,7 @@
       <img [src]="imgURL">
     </ion-slide>
   </ion-slides>
+  <hr>
   <ion-title>{{house.listing.name}}</ion-title>
   <ion-list no-lines>
     <ion-item>
@@ -46,33 +47,32 @@
   <p style="white-space: pre-line">
     A double room in a serene apartment for rent in a historic building dating from the medieval period, located on the 3rd floor,
     and the stairs was the ones going to the watchtower in the original building dating from the 16th century. The bathroom
-    is shared and always kept in prestine condition. \nFor breakfast you will find coffee, tea, bread, pastries, yugurt and
-    muessli etc, and this can be enjoyed on the roofteracce if the weather permits, which is also a nice place to have a
-    glass of wine after a day of sightseeing or shopping.\nOn the doorstep you will find the Picasso museum, independent
-    boutiques, art galleries, artists workshops, and this is the Borne area known for plenty of trendy bars and restaurants.
-    \nSeveral metro stations and bus stops are nearby, howewer most of the sights are within walking distance; the cathedral,
-    Santa Maria del Mar, the beaches and Las Ramblas can be reached in less than 10 minutes. \nEl Vaixell de paper (The Paper
-    Boat) - representing something so fragile yet so strong!
+    is shared and always kept in prestine condition.
   </p>
-  <ion-card class="adv-map" (click)="mapTapped($event, house)">
-    <div style="position: relative">
-      <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&markers=41.384660156154446%2C2.180001899114807&size=480x320&zoom=15&client=gme-airbnbinc&channel=monorail-prod&signature=3P-iFyNCjgUjDOzc8dnPe-kB60E%3D">
-      <ion-fab right top>
-        <button ion-fab color="secondary">
-        <ion-icon name="pin"></ion-icon>
-      </button>
-      </ion-fab>
-    </div>
-  </ion-card>
+  <hr>
   <ion-title>House Rules</ion-title>
   <p style="white-space: pre-line">
     It is not about listing and endless set of rules, basically my philosophy about the house is letting my guests using their
     common sense, being respectful, treating others as you like being treated and on top of that making the people staying
-    here comfortable and helping them to make the most of their stay with me. My priority is always the comfort and wellbeing
-    of my guests and I will go out of my way to achieve that goal.\r\nYou will be given a set of keys after the check in
-    process, giving you complete freedom to go in and out at your will."
+    here comfortable and helping them to make the most of their stay with me.
   </p>
   <hr>
+  <ion-card class="adv-map" (click)="mapTapped($event, house)">
+  <div style="position: relative">
+    <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&markers=41.384660156154446%2C2.180001899114807&size=480x320&zoom=15&client=gme-airbnbinc&channel=monorail-prod&signature=3P-iFyNCjgUjDOzc8dnPe-kB60E%3D">
+    <ion-fab right top>
+      <button ion-fab color="secondary">
+        <ion-icon name="pin"></ion-icon>
+        </button>
+    </ion-fab>
+  </div>
+  <ion-item actions>
+    <button ion-button color="secondary" clear icon-left>
+      <ion-icon name='navigate'></ion-icon>
+      Start
+    </button>
+  </ion-item>
+</ion-card>
   <ion-title>About Your Host</ion-title>
   <ion-item (click)="callMenu()">
     <ion-thumbnail item-left>
