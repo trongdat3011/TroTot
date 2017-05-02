@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, HouseInfoPage, MapPage} from '../pages/pages';
+import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, HouseInfoPage, MapPage, FirstPage, Login } from '../pages/pages';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DemoAPI, ProvideStorage } from '../providers/providers';
@@ -21,7 +21,9 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     SavedPage,
     TabsPage,
     HouseInfoPage,
-    MapPage
+    MapPage,
+    FirstPage,
+    Login
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,9 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     SavedPage,
     TabsPage,
     HouseInfoPage,
-    MapPage
+    MapPage,
+    FirstPage,
+    Login
   ],
   providers: [
     DemoAPI,

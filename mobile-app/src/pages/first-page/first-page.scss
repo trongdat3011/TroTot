@@ -1,0 +1,15 @@
+page-first-page {
+    .fixed-bottom {
+        position: fixed;
+        bottom: 5%;
+        width: 92%;
+        height: 14%;
+        button {
+            height: 50%;
+        }
+    }
+    p {
+        font-size: 140%;
+        color: gray;
+    }
+}
