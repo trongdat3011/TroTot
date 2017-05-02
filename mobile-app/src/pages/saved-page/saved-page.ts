@@ -23,7 +23,7 @@ export class SavedPage {
   }
 
   getRatingImg(rating: number) {
-    let res = 'star/small_' + Math.round(rating - 0.5);
+    let res = 'assets/star/small_' + Math.round(rating - 0.5);
     if (Math.round(rating) != rating)
       res += '_half';
     res += '.png';

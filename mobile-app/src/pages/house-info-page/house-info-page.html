@@ -58,22 +58,21 @@
   </p>
   <hr>
   <ion-card class="adv-map" (click)="mapTapped($event, house)">
-  <div style="position: relative">
-    <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&markers=41.384660156154446%2C2.180001899114807&size=480x320&zoom=15&client=gme-airbnbinc&channel=monorail-prod&signature=3P-iFyNCjgUjDOzc8dnPe-kB60E%3D">
-    <ion-fab right top>
-      <button ion-fab color="secondary">
+    <div style="position: relative">
+      <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&markers=41.384660156154446%2C2.180001899114807&size=480x320&zoom=15&client=gme-airbnbinc&channel=monorail-prod&signature=3P-iFyNCjgUjDOzc8dnPe-kB60E%3D">
+      <ion-fab right top>
+        <button ion-fab color="secondary">
         <ion-icon name="pin"></ion-icon>
         </button>
-    </ion-fab>
-  </div>
-  <ion-item actions>
-    <button ion-button color="secondary" clear icon-left>
+      </ion-fab>
+    </div>
+    <ion-item actions>
+      <button ion-button color="secondary" clear icon-left>
       <ion-icon name='navigate'></ion-icon>
       Start
     </button>
-  </ion-item>
-</ion-card>
-  <ion-title>About Your Host</ion-title>
+    </ion-item>
+  </ion-card>
   <ion-item (click)="callMenu()">
     <ion-thumbnail item-left>
       <img src="{{house.listing.primary_host.picture_url}}">

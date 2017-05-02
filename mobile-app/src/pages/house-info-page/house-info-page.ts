@@ -89,6 +89,14 @@ export class HouseInfoPage {
       cssClass: 'action-sheets-basic-page',
       buttons: [
         {
+          text: 'Email Host',
+          icon: 'ios-mail',
+          handler: () => {
+            window.open("mailto:vietdoanhp1996@gmail.com", '_system');
+          }
+
+        },
+        {
           text: 'Call +84123456789',
           icon: 'ios-call',
           handler: () => {
