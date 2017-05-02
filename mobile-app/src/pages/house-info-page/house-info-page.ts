@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, NavController, NavParams, AlertController, ToastController, LoadingController, ActionSheetController } from 'ionic-angular';
 import { ProvideStorage } from '../../providers/providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { MapPage } from '../pages';
+import { MapPage, Review } from '../pages';
 declare var window;
 @Component({
   selector: 'page-house-info-page',
@@ -22,11 +22,11 @@ export class HouseInfoPage {
     public loadingController: LoadingController,
     public actionSheetCtrl: ActionSheetController,
     public platform: Platform) {
-      this.tarBarElement = document.querySelector('.tabbar.show-tabbar');  
-    }
+    this.tarBarElement = document.querySelector('.tabbar.show-tabbar');
+  }
 
   ionViewCanEnter() {
-    
+
     this.house = this.navParams.data;
     if (this.house.listing.picture_urls.length > 5)
       this.house.listing.picture_urls = this.house.listing.picture_urls.slice(0, 5);
@@ -41,7 +41,7 @@ export class HouseInfoPage {
   ionViewWillLeave() {
     this.tarBarElement.style.display = 'flex';
   }
-  
+
   toggleFollow() {
     if (this.isFollowing) {
       let confirm = this.alertController.create({
@@ -115,12 +115,16 @@ export class HouseInfoPage {
     actionSheet.present();
   }
 
-  mapTapped($event, item) {
+  mapTapped($event: Event, item: any) {
     let location = {
       latitude: item.listing.lat,
       longtitude: item.listing.lng,
       name: item.listing.name
     }
     this.navCtrl.push(MapPage, location);
+  }
+
+  reviewTapped($event: Event, houseId: number) {
+    this.navCtrl.push(Review, houseId);
   }
 }

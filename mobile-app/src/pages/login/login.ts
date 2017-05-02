@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Signup } from '../pages';
+import { Signup, TabsPage } from '../pages';
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -20,7 +21,12 @@ export class Login {
     this.navCtrl.push(Signup);
   }
 
-  onLogin(loginForm) {
-    console.log(loginForm);
+  onLogin(loginForm: NgForm) {
+    this.submitted = true;
+    if (loginForm.valid) {
+      console.log(this.login);
+      this.navCtrl.push(TabsPage);
+    }
+    
   }
 }

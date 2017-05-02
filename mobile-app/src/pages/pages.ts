@@ -8,3 +8,4 @@ export * from './map/map';
 export * from './first-page/first-page';
 export * from './login/login';
 export * from './signup/signup';
+export * from './review/review';

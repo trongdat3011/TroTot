@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DemoAPI {
-  private baseUrl = 'https://api.airbnb.com/v2/search_results';
+  private baseUrl = 'https://api.airbnb.com/v2/';
   constructor(
     public http: Http) {}
   
@@ -18,16 +18,29 @@ export class DemoAPI {
     params.set('locale', 'vnm');
     params.set('currency', 'USD');
     options.search = params;
-    return this.http.get(this.baseUrl, options)
+    return this.http.get(this.baseUrl + 'search_results', options)
                     .map(this.extractData)
                     .catch(this.handleError)
                     
   }
 
+  getReviews(houseId:number): Observable<any[]> {
+    let options = new RequestOptions();
+    let params = new URLSearchParams();
+    params.set('client_id', '3092nxybyb0otqw18e8nh5nty');
+    params.set('listing_id', houseId.toString());
+    params.set('role', 'all');
+    params.set('_limit', '20');
+    options.search = params;
+    return this.http.get(this.baseUrl + 'reviews', options)
+                    .map(this.extractData)
+                    .catch(this.handleError)
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     //console.log(body);
-    return body.search_results || { };
+    return body.search_results || body.reviews || { };
   }
 
   private handleError (error: Response | any) {

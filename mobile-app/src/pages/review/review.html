@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Review</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list *ngFor='let review of reviews'>
+    <ion-card>
+
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="{{review.author.picture_url}}">
+        </ion-avatar>
+        <h2>{{review.author.first_name}}</h2>
+        <p>{{review.created_at}}</p>
+      </ion-item>
+      <ion-card-content>
+        <p style="color: gray">{{review.comments}}</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+</ion-content>

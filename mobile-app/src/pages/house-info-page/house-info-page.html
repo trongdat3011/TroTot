@@ -26,23 +26,27 @@
       <img [src]="imgURL">
     </ion-slide>
   </ion-slides>
-  <hr>
   <ion-title>{{house.listing.name}}</ion-title>
-  <ion-list no-lines>
+  <ion-list no-border>
     <ion-item>
       <ion-icon name="pin" color='danger' item-left></ion-icon>
-      <p>{{house.listing.public_address}}</p>
+      <ion-note>
+        {{house.listing.public_address}}
+      </ion-note>
     </ion-item>
     <ion-item>
       <ion-icon name="ios-pricetag" color='secondary' item-left></ion-icon>
-      <p>${{house.pricing_quote.nightly_price}}</p>
+      <ion-note>
+        ${{house.pricing_quote.nightly_price}}
+      </ion-note>
     </ion-item>
     <ion-item>
       <ion-icon name="ios-calculator" color="light" item-left></ion-icon>
-      <p>18m2</p>
+      <ion-note>
+        18m^2
+      </ion-note>
     </ion-item>
   </ion-list>
-  <hr>
   <ion-title>Description</ion-title>
   <p style="white-space: pre-line">
     A double room in a serene apartment for rent in a historic building dating from the medieval period, located on the 3rd floor,
@@ -56,12 +60,12 @@
     common sense, being respectful, treating others as you like being treated and on top of that making the people staying
     here comfortable and helping them to make the most of their stay with me.
   </p>
-  <hr>
+
   <ion-card class="adv-map" (click)="mapTapped($event, house)">
     <div style="position: relative">
       <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&markers=41.384660156154446%2C2.180001899114807&size=480x320&zoom=15&client=gme-airbnbinc&channel=monorail-prod&signature=3P-iFyNCjgUjDOzc8dnPe-kB60E%3D">
       <ion-fab right top>
-        <button ion-fab color="secondary">
+        <button ion-fab color="danger">
         <ion-icon name="pin"></ion-icon>
         </button>
       </ion-fab>
@@ -73,6 +77,10 @@
     </button>
     </ion-item>
   </ion-card>
+  <button ion-item (click)="reviewTapped($event, house.listing.id)" icon-right>
+    Read reviews
+    <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+  </button>
   <ion-item (click)="callMenu()">
     <ion-thumbnail item-left>
       <img src="{{house.listing.primary_host.picture_url}}">
