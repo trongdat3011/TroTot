@@ -1,10 +1,38 @@
-<!--
-  Generated template for the SearchPage page.
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-content>
-  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
-  <div #map id="map"></div>
+<ion-content padding>
+  <ion-row>
+    <ion-col col-9>
+      <h5>Use your location</h5>
+      <p>Search with your current location</p>
+    </ion-col>
+    <ion-col col-3>
+      <ion-toggle [(ngModel)]="useUserLocation"></ion-toggle>
+    </ion-col>
+  </ion-row>
+  <hr>
+  <h5>Price Range</h5>
+  <p>{{price.lower}}tr - {{price.upper}}tr</p>
+  <ion-range dualKnobs="true" max="10" [(ngModel)]="price" color="primary">
+  </ion-range>
+  <hr>
+  <h5>Rating Range</h5>
+  <p>{{rating.lower}}star(s) - {{rating.upper}}star(s)</p>
+  <ion-range dualKnobs="true" max="5" [(ngModel)]="rating" color="danger">
+  </ion-range>
+  <hr>
+  <ion-row>
+    <ion-col col-7>
+      <h5>Radius Distance</h5>
+    </ion-col>
+    <ion-col col-5>
+      <ion-icon name="ios-remove-circle-outline" color="secondary"></ion-icon>
+      <span>5km</span>
+      <ion-icon name="ios-add-circle-outline" color="secondary"></ion-icon>
+    </ion-col>
+  </ion-row>
 </ion-content>
