@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 import { AutocompletePage } from '../pages';
+import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google;
 @Component({
@@ -17,11 +18,9 @@ export class SearchPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public modalCtrl: ModalController) {}
-
-  ionViewDidLoad() {
-    
-  }
+    public modalCtrl: ModalController,
+    public loadingController: LoadingController,
+    public geolocation: Geolocation) {}
 
   increaseRadius() {
     if (this.radius < 20)
@@ -40,4 +39,39 @@ export class SearchPage {
     });
     modal.present();
   }
+
+  showListings() {
+    let location:any;
+    let loader = this.loadingController.create({
+      content: 'Processing...'
+    })
+    loader.present();
+    if (this.useUserLocation) {
+      this.geolocation.getCurrentPosition().then(pos => {
+        location = {
+          lat: pos.coords.latitude,
+          lng: pos.coords.longitude
+        }
+        console.log(location);
+        loader.dismiss();
+      }); 
+    }
+    else {
+      let geocoder = new google.maps.Geocoder();
+      geocoder.geocode( { 'address': this.address}, function(results, status) {
+      if (status == 'OK') {
+        location = {
+          lat: results[0].geometry.location.lat(),
+          lng: results[0].geometry.location.lng()
+        }
+        console.log(location);
+        loader.dismiss();
+      } else {
+        
+        loader.dismiss();
+      }
+    });
+    }
+  }
+
 }

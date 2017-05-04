@@ -33,7 +33,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     IonicModule.forRoot(MyApp),
     HttpModule,
     IonicStorageModule.forRoot(),
-    AgmCoreModule.forRoot({ apiKey: 'AIzaSyD0CAaK08V00HNBekjLkQnkX9YyZvqfbYI'})
+    AgmCoreModule.forRoot({ apiKey: 'AIzaSyD0CAaK08V00HNBekjLkQnkX9YyZvqfbYI', libraries: ["places"] })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

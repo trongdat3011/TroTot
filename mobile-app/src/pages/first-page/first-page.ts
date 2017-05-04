@@ -10,11 +10,7 @@ export class FirstPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FirstPage');
-  }
-
+    
   searchPageTapped() {
     this.navCtrl.push(TabsPage);
   }
