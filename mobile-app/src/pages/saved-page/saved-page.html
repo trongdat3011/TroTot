@@ -16,14 +16,21 @@
   </ion-card>
   <ion-list>
     <ion-card *ngFor='let house of favorites' (click)="houseTapped($event, house)">
-      <img src='{{house.listing.picture_url}}' />
+      <ion-item>
+        <ion-avatar item-left>
+          <img src="{{house.primary_host.picture_url}}">
+        </ion-avatar>
+        <h2>{{house.primary_host.real_name}}</h2>
+        <p>{{house.public_address}}</p>
+      </ion-item>
+      <img src='{{house.picture_url}}' />
       <ion-card-content>
         <p>
-          <span>${{house.pricing_quote.nightly_price}}</span> {{house.listing.name}}
+          <span>{{house.price / 1000000}} triệu VND</span> {{house.name}}
         </p>
         <ion-item class='no-padding'>
-          <img src="{{getRatingImg(house.listing.star_rating)}}" item-left/>
-          <p>{{house.listing.reviews_count}} reviews</p>
+          <img src="{{getRatingImg(house.star_rating)}}" item-left/>
+          <p style="color: #387ef5">{{house.reviews_count}} reviews</p>
         </ion-item>
       </ion-card-content>
     </ion-card>

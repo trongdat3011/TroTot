@@ -11,14 +11,14 @@
     <ion-row *ngFor='let row of grid'>
       <ion-col col-6 *ngFor='let house of row' (click)="houseTapped($event, house)">
         <ion-card class='no-padding no-margin'>
-          <img src='{{house.listing.picture_url}}' />
+          <img src='{{house.picture_url}}'/>
           <ion-card-content>
             <p>
-              <span>${{house.pricing_quote.nightly_price}}</span> {{house.listing.name}}
+              <span>{{house.price / 1000000}} triệu VND</span> {{house.name}}
             </p>
             <ion-item class='no-padding no-margin'>
-              <img src="{{getRatingImg(house.listing.star_rating)}}" item-left/>
-              <p>{{house.listing.reviews_count}} reviews</p>
+              <img src="{{getRatingImg(house.star_rating)}}" item-left/>
+              <p>{{house.reviews_count}} reviews</p>
             </ion-item>
           </ion-card-content>
         </ion-card>

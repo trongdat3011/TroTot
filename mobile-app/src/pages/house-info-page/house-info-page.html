@@ -22,22 +22,22 @@
 
 <ion-content padding>
   <ion-slides pager>
-    <ion-slide *ngFor="let imgURL of house.listing.picture_urls">
+    <ion-slide *ngFor="let imgURL of house.pictures_url">
       <img [src]="imgURL">
     </ion-slide>
   </ion-slides>
-  <ion-title>{{house.listing.name}}</ion-title>
+  <h6>{{house.name}}</h6>
   <ion-list no-border>
     <ion-item>
       <ion-icon name="pin" color='danger' item-left></ion-icon>
       <ion-note>
-        {{house.listing.public_address}}
+        {{house.public_address}}
       </ion-note>
     </ion-item>
     <ion-item>
       <ion-icon name="ios-pricetag" color='secondary' item-left></ion-icon>
       <ion-note>
-        ${{house.pricing_quote.nightly_price}}
+        {{house.price / 1000000}} triệu VND
       </ion-note>
     </ion-item>
     <ion-item>
@@ -49,16 +49,15 @@
   </ion-list>
   <ion-title>Description</ion-title>
   <p style="white-space: pre-line">
-    A double room in a serene apartment for rent in a historic building dating from the medieval period, located on the 3rd floor,
-    and the stairs was the ones going to the watchtower in the original building dating from the 16th century. The bathroom
-    is shared and always kept in prestine condition.
+    {{house.description}}
   </p>
   <hr>
   <ion-title>House Rules</ion-title>
   <p style="white-space: pre-line">
-    It is not about listing and endless set of rules, basically my philosophy about the house is letting my guests using their
-    common sense, being respectful, treating others as you like being treated and on top of that making the people staying
-    here comfortable and helping them to make the most of their stay with me.
+    -Đi về trước 10h30p tối
+    -Không được hút thuốc
+    -Không nuôi thú vật
+    -Bạn bè đến ở phải xin phép
   </p>
 
   <ion-card class="adv-map" (click)="mapTapped($event, house)">
@@ -77,17 +76,17 @@
     </button>
     </ion-item>
   </ion-card>
-  <button ion-item (click)="reviewTapped($event, house.listing.id)" icon-right>
+  <button ion-item (click)="reviewTapped($event, house._id)" icon-right>
     Read reviews
     <ion-icon md="ios-arrow-forward" item-right style="color: gray"></ion-icon>
   </button>
   <ion-item (click)="callMenu()">
     <ion-thumbnail item-left>
-      <img src="{{house.listing.primary_host.picture_url}}">
+      <img src="{{house.primary_host.picture_url}}">
     </ion-thumbnail>
-    <h2>{{house.listing.primary_host.first_name}}</h2>
-    <p>{{house.listing.public_address}}</p>
-    <p>+841234567890</p>
+    <h2>{{house.primary_host.first_name}}</h2>
+    <p>{{house.public_address}}</p>
+    <p>{{house.phone_number}}</p>
     <p>Usually responds within a day</p>
   </ion-item>
   <button ion-button block (click)="callMenu()" class='fixed-bottom'>
