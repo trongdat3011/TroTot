@@ -21,8 +21,8 @@ apiRouter
   .get('/review/:houseid', apiController.getReviews)
   .post('/review/:houseid', tokenChecker, apiController.postReview)
   .post('/house', tokenChecker, apiController.postHouse)
-  .get('/house/:houseid', apiController.getHouseFromId)
   .get('/house', apiController.getHouses)
+  .get('/house/:houseid', apiController.getHouseFromId)
   .put('/house/:houseid', tokenChecker, apiController.changeHouse);
 
 const accountRouter = new Router();

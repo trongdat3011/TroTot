@@ -101,7 +101,7 @@ exports.getHouses = (req, res, next) => {
         matchedHouses = matchedHouses.filter( house => house.price >= priceLow && house.price <= priceHigh);
       }
       if (req.query.limit) {
-        const limit = Number(req.query.radius);
+        const limit = Number(req.query.limit);
         matchedHouses.sort( (a, b) => a.distance - b.distance);
         matchedHouses = matchedHouses.slice(0, Math.min(matchedHouses.length, limit) );
       }
