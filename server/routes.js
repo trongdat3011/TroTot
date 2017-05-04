@@ -24,14 +24,18 @@ apiRouter
   .get('/house/:houseid', apiController.getHouseFromId)
   .get('/house', apiController.getHouses);
 
-const mainRouter = new Router();
-mainRouter
-  .use('/admin', adminRouter)
-  .use('/api/', apiRouter)
+const accountRouter = new Router();
+accountRouter
   .post('/register', accController.register)
   .post('/login', accController.login)
   .get('/account', tokenChecker, accController.getInfo)
   .put('/account', tokenChecker, accController.changeUser);
+
+const mainRouter = new Router();
+mainRouter
+  .use('/admin', adminRouter)
+  .use('/api/', apiRouter)
+  .use('/', accountRouter);
 
 
 module.exports = mainRouter;

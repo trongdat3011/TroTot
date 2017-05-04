@@ -16,7 +16,9 @@ const houseSchema = new Schema({
   public_address: { type: String, require: true },
   reviews_count: { type: Number, default: 0 },
   star_rating: { type: Number, min: 0, max: 5, default: 0 },
-  pictures_url: [String]
+  pictures_url: [String],
+  available: { type: Boolean, default: true },
+  rent_type: { type: String, required: true }
 });
 
 
