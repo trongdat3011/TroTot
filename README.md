@@ -17,9 +17,9 @@ insert commands to run the app
 To get the app running
 
 ```
-insert commands to run the api server
+npm install && npm run import && npm run genapi && npm run dev
 ```
-To get the server running
+To get the server running, access server/ for more details.
 
 
 Group members
