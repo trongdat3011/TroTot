@@ -17,7 +17,7 @@ app.use(helmet());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-app.use(express.static(__dirname + '/doc'));
+app.use(express.static(`${__dirname}/doc`));
 
 app.use('/', routes);
 

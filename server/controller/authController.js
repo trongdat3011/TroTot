@@ -26,4 +26,5 @@ exports.tokenChecker = (req, res, next) => {
 };
 exports.adminChecker = (req, res, next) => {
   if (req.decoded.username === admin) next();
+  return res.json({ message: 'No permission' });
 };
