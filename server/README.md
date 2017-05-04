@@ -34,12 +34,17 @@ Import sample database
 npm run import
 ```
 
+Generate API documentation
+```bash
+npm run genapi
+```
+
 Run the server in dev mode (using nodemon)
 
 ```bash
 npm run dev
 ```
 
-The server run on your `localhost:8080` by default
+The server run on `localhost:8080` by default, access to view API documentation.
 
 
