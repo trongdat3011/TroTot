@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-searchbar></ion-searchbar>
+    <ion-searchbar (click)="showAddressModal()" type="text" [(ngModel)]="address" placeholder="Pick an address"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
@@ -30,9 +30,12 @@
       <h5>Radius Distance</h5>
     </ion-col>
     <ion-col col-5>
-      <ion-icon name="ios-remove-circle-outline" color="secondary"></ion-icon>
-      <span>5km</span>
-      <ion-icon name="ios-add-circle-outline" color="secondary"></ion-icon>
+      <ion-icon name="ios-remove-circle-outline" color="secondary" (click)="decreaseRadius()"></ion-icon>
+      <span style="color: gray; font-size: 130%">{{radius}}km</span>
+      <ion-icon name="ios-add-circle-outline" color="secondary" (click)="increaseRadius()"></ion-icon>
     </ion-col>
   </ion-row>
+  <button ion-button block>
+    Show my listings
+  </button>
 </ion-content>
