@@ -69,18 +69,23 @@ exports.getHouses = (req, res, next) => {
         house.distance = distance(lat, lng, house.lat, house.lng);
       });
 
-      if (req.params.radius) {
+      if (req.query.radius) {
         const radius = Number(req.query.radius);
-        matchedHouses.filter( house => house.distance < radius);
+        matchedHouses = matchedHouses.filter( house => house.distance < radius);
       }
 
-      if (req.params.priceLow && req.params.priceHigh) {
-        const priceLow = Number(req.query.price_low);
-        const priceHigh = Number(req.query.price_high);
-        matchedHouses.filter( house => house.price >= priceLow && house.price <= priceHigh);
+      if (req.query.priceLow && req.query.priceHigh) {
+        console.log('im there');
+        const priceLow = Number(req.query.priceLow);
+        const priceHigh = Number(req.query.priceHigh);
+        console.log(priceHigh, priceLow);
+        console.log(matchedHouses.length);
+        matchedHouses = matchedHouses.filter( house => house.price >= priceLow && house.price <= priceHigh);
+        console.log(matchedHouses.length);
       }
-
-      if (req.params.limit) {
+      console.log(req.query.limit);
+      if (req.query.limit) {
+        console.log('Im here');
         const limit = Number(req.query.radius);
         matchedHouses.sort( (a, b) => a.distance - b.distance);
         matchedHouses = matchedHouses.slice(0, Math.min(matchedHouses.length, limit) );
