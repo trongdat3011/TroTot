@@ -11,7 +11,7 @@ export class ProvideStorage {
         public events: Events) { }
 
     favoriteHouse(house): void {
-        this.storage.set(house.listing.id.toString(), JSON.stringify(house));
+        this.storage.set(house._id.toString(), JSON.stringify(house));
     }
 
     unfavoriteHouse(houseId): void {

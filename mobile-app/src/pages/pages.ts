@@ -10,3 +10,4 @@ export * from './login/login';
 export * from './signup/signup';
 export * from './review/review';
 export * from './autocomplete-page/autocomplete-page';
+export * from './search-result/search-result';

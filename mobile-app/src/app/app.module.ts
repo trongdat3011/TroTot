@@ -4,10 +4,10 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, 
-        HouseInfoPage, MapPage, FirstPage, Login, Review, AutocompletePage } from '../pages/pages';
+        HouseInfoPage, MapPage, FirstPage, Login, Review, AutocompletePage, SearchResult } from '../pages/pages';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { DemoAPI, ProvideStorage } from '../providers/providers';
+import { DemoAPI, ProvideStorage, TrototData } from '../providers/providers';
 import { HttpModule} from '@angular/http';
 import { IonicStorageModule } from '@ionic/storage'
 import { SocialSharing } from '@ionic-native/social-sharing';
@@ -26,7 +26,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     FirstPage,
     Login,
     Review,
-    AutocompletePage
+    AutocompletePage,
+    SearchResult
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     FirstPage,
     Login,
     Review,
-    AutocompletePage
+    AutocompletePage,
+    SearchResult
   ],
   providers: [
     DemoAPI,
@@ -57,6 +59,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     ProvideStorage,
     SocialSharing,
     Geolocation,
+    TrototData,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -28,9 +28,9 @@ export class HouseInfoPage {
   ionViewCanEnter() {
 
     this.house = this.navParams.data;
-    if (this.house.listing.picture_urls.length > 5)
-      this.house.listing.picture_urls = this.house.listing.picture_urls.slice(0, 5);
-    this.provideStorage.isFavoriteHouse(this.house.listing.id)
+    if (this.house.pictures_url.length > 5)
+      this.house.pictures_url = this.house.pictures_url.slice(0, 5);
+    this.provideStorage.isFavoriteHouse(this.house._id)
       .then(val => this.isFollowing = val);
   }
 
@@ -52,7 +52,7 @@ export class HouseInfoPage {
             text: 'Yes',
             handler: () => {
               this.isFollowing = false;
-              this.provideStorage.unfavoriteHouse(this.house.listing.id);
+              this.provideStorage.unfavoriteHouse(this.house._id);
 
               let toast = this.toastController.create({
                 message: 'You have unfollowed this house.',
@@ -77,7 +77,7 @@ export class HouseInfoPage {
       content: 'Processing...'
     })
     loader.present();
-    this.socialSharing.share('Hello', 'blah blah', this.house.listing.picture_url, 'https://www.facebook.com/vietdoan.hp')
+    this.socialSharing.share('Hello', 'blah blah', this.house.picture_url, 'https://www.facebook.com/vietdoan.hp')
       .then(() => {
         loader.dismiss();
       });
@@ -97,10 +97,10 @@ export class HouseInfoPage {
 
         },
         {
-          text: 'Call +84123456789',
+          text: 'Call ' + this.house.phone_number,
           icon: 'ios-call',
           handler: () => {
-            window.open("tel:01253784598")
+            window.open("tel:" + this.house.phone_number);
           }
         },
         {
@@ -117,9 +117,9 @@ export class HouseInfoPage {
 
   mapTapped($event: Event, item: any) {
     let location = {
-      latitude: item.listing.lat,
-      longtitude: item.listing.lng,
-      name: item.listing.name
+      latitude: item.lat,
+      longtitude: item.lng,
+      name: item.name
     }
     this.navCtrl.push(MapPage, location);
   }
