@@ -1,13 +1,13 @@
 const Review = require('../model/review/schema');
 const House = require('../model/house/schema');
 
-function distance(lat1, lon1, lat2, lon2) {
+const distance = (lat1, lon1, lat2, lon2) => {
   const p = 0.017453292519943295;
   const c = Math.cos;
   const a = 0.5 - c((lat2 - lat1) * p) / 2 +
             c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p)) / 2;
   return 12742 * Math.asin(Math.sqrt(a));
-}
+};
 
 exports.getReviews = (req, res, next) => {
   const limit = Number(req.query.limit) || 10;
@@ -29,7 +29,15 @@ exports.postReview = (req, res, next) => {
   const review = new Review(newReview);
   review.save( (err) => {
     if (err) return res.send(err);
-    res.json({ message: 'Successful!' });
+    House.findById(req.params.houseid, (err, house) => {
+      if (err) return res.send(err);
+      house.reviews_count += 1;
+      house.star_rating += (req.body.star_rating - house.star_rating) / house.reviews_count;
+      house.save( (err) => {
+        if (err) return res.send(err);
+        res.json({ message: 'Successful!' });
+      });
+    });
   });
 };
 
@@ -41,6 +49,19 @@ exports.postHouse = (req, res, next) => {
     if (err) return res.send(err);
     res.json({ message: 'Successful~' });
   });
+};
+
+exports.changeHouse = (req, res, next) => {
+  House.findById(req.params.houseid, (err, house) => {
+    if (err) return res.send(err);
+    if (req.decoded._id != house.primary_host) return res.json( { message: 'No permission' });
+    Object.assign(house, req.body);
+    house.save( (err) => {
+      if (err) return res.send(err);
+      res.json({ message: 'Successful~' });
+    });
+  });
+
 };
 
 exports.getHouseFromId = (req, res, next) => {
