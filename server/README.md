@@ -1,26 +1,45 @@
-# tro-tot
+# TRO-TOT
 
-tro-tot api server
+TRO-TOT api server
 
 
 
-## dependencies
+## Requirements
 
-node 6.x.x or later (for native ES6 support) and mongodb
+Node 6.x.x or later (for native ES6 support) and MongoDB
 
-## developing
+## Developing
 
-run mongod on a separated terminal instance:
+Run mongod on a separated terminal instance:
 
-```
+```bash
 mongod
 ```
 
-run the app:
+Get the dependencies
 
 ```bash
-npm install && npm run dev
+npm install
 ```
 
-the app runs on `localhost:8080`
+Configure your MongoDB connection string, server port, etc.
+
+```bash
+vim ./config.js
+```
+
+Import sample database
+
+```bash
+npm run import
+```
+
+Run the server in dev mode (using nodemon)
+
+```bash
+npm run dev
+```
+
+The server run on your `localhost:8080` by default
+
 
