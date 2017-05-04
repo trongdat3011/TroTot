@@ -14,7 +14,5 @@ export class TabsPage {
   constructor() {
 
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TabsPage');
-  }
+
 }

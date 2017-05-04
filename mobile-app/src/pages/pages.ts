@@ -4,3 +4,9 @@ export * from './saved-page/saved-page';
 export * from './home/home';
 export * from './profile-page/profile-page'
 export * from './house-info-page/house-info-page';
+export * from './map/map';
+export * from './first-page/first-page';
+export * from './login/login';
+export * from './signup/signup';
+export * from './review/review';
+export * from './autocomplete-page/autocomplete-page';

@@ -12,7 +12,7 @@
     </ion-buttons>
     <ion-buttons end>
       <button ion-button icon-only (click)="shareImg()">
-        <ion-icon name="share"></ion-icon>
+        <ion-icon name="md-share"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -27,33 +27,70 @@
     </ion-slide>
   </ion-slides>
   <ion-title>{{house.listing.name}}</ion-title>
-  <ion-list no-lines>
+  <ion-list no-border>
     <ion-item>
-      <ion-icon name="calendar" item-left></ion-icon>
-      <ion-label>Date</ion-label>
-      <ion-datetime displayFormat="MMM DD, YYYY" max="2056" [(ngModel)]="conferenceDate"></ion-datetime>
+      <ion-icon name="pin" color='danger' item-left></ion-icon>
+      <ion-note>
+        {{house.listing.public_address}}
+      </ion-note>
     </ion-item>
-
     <ion-item>
-      <ion-icon name="pin" item-left></ion-icon>
-      <ion-label>Location</ion-label>
-      <ion-select>
-        <ion-option value="madison" selected>Madison, WI</ion-option>
-        <ion-option value="austin">Austin, TX</ion-option>
-        <ion-option value="chicago">Chicago, IL</ion-option>
-        <ion-option value="seattle">Seattle, WA</ion-option>
-      </ion-select>
+      <ion-icon name="ios-pricetag" color='secondary' item-left></ion-icon>
+      <ion-note>
+        ${{house.pricing_quote.nightly_price}}
+      </ion-note>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-calculator" color="light" item-left></ion-icon>
+      <ion-note>
+        18m^2
+      </ion-note>
     </ion-item>
   </ion-list>
+  <ion-title>Description</ion-title>
+  <p style="white-space: pre-line">
+    A double room in a serene apartment for rent in a historic building dating from the medieval period, located on the 3rd floor,
+    and the stairs was the ones going to the watchtower in the original building dating from the 16th century. The bathroom
+    is shared and always kept in prestine condition.
+  </p>
   <hr>
-  <p>
-      The Ionic Conference is a one-day conference featuring talks from the
-      Ionic team. It is focused on Ionic applications being built with
-      Ionic 2. This includes migrating apps from Ionic 1 to Ionic 2,
-      Angular concepts, Webpack, Sass, and many other technologies used
-      in Ionic 2. Tickets are completely sold out, and we’re expecting
-      more than 1000 developers – making this the largest Ionic
-      conference ever!
-    </p>
+  <ion-title>House Rules</ion-title>
+  <p style="white-space: pre-line">
+    It is not about listing and endless set of rules, basically my philosophy about the house is letting my guests using their
+    common sense, being respectful, treating others as you like being treated and on top of that making the people staying
+    here comfortable and helping them to make the most of their stay with me.
+  </p>
 
+  <ion-card class="adv-map" (click)="mapTapped($event, house)">
+    <div style="position: relative">
+      <img src="https://maps.googleapis.com/maps/api/staticmap?maptype=roadmap&markers=41.384660156154446%2C2.180001899114807&size=480x320&zoom=15&client=gme-airbnbinc&channel=monorail-prod&signature=3P-iFyNCjgUjDOzc8dnPe-kB60E%3D">
+      <ion-fab right top>
+        <button ion-fab color="danger">
+        <ion-icon name="pin"></ion-icon>
+        </button>
+      </ion-fab>
+    </div>
+    <ion-item actions>
+      <button ion-button color="secondary" clear icon-left>
+      <ion-icon name='navigate'></ion-icon>
+      Start
+    </button>
+    </ion-item>
+  </ion-card>
+  <button ion-item (click)="reviewTapped($event, house.listing.id)" icon-right>
+    Read reviews
+    <ion-icon md="ios-arrow-forward" item-right style="color: gray"></ion-icon>
+  </button>
+  <ion-item (click)="callMenu()">
+    <ion-thumbnail item-left>
+      <img src="{{house.listing.primary_host.picture_url}}">
+    </ion-thumbnail>
+    <h2>{{house.listing.primary_host.first_name}}</h2>
+    <p>{{house.listing.public_address}}</p>
+    <p>+841234567890</p>
+    <p>Usually responds within a day</p>
+  </ion-item>
+  <button ion-button block (click)="callMenu()" class='fixed-bottom'>
+    ENQUIRE NOW
+  </button>
 </ion-content>
