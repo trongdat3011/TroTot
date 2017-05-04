@@ -58,23 +58,34 @@ exports.getHouses = (req, res, next) => {
     .exec( (err, houses) => {
       if (err) return res.send(err);
       let matchedHouses = [];
+
+      // Assume we always have lat long
       const lat = Number(req.query.lat);
       const lng = Number(req.query.lng);
+
+      matchedHouses = houses.map( house => house.toObject());
+
+      matchedHouses.forEach( (house) => {
+        house.distance = distance(lat, lng, house.lat, house.lng);
+      });
+
       if (req.params.radius) {
-        houses.forEach( (house) => {
-          if ( distance(lat, lng, house.lat, house.lng) < Number(req.query.radius) ) {
-            matchedHouses.push(house);
-          }
-        });
-      } else {
-        matchedHouses = houses.map( (house) => {
-          const temp = house.toObject();
-          temp.distance = distance(lat, lng, house.lat, house.lng);
-          return temp;
-        });
-        matchedHouses.sort( (a, b) => a.distance - b.distance);
-        matchedHouses = matchedHouses.slice(0, Math.min(matchedHouses.length, Number(req.query.limit) ));
+        const radius = Number(req.query.radius);
+        matchedHouses.filter( house => house.distance < radius);
       }
+
+      if (req.params.priceLow && req.params.priceHigh) {
+        const priceLow = Number(req.query.price_low);
+        const priceHigh = Number(req.query.price_high);
+        matchedHouses.filter( house => house.price >= priceLow && house.price <= priceHigh);
+      }
+
+      if (req.params.limit) {
+        const limit = Number(req.query.radius);
+        matchedHouses.sort( (a, b) => a.distance - b.distance);
+        matchedHouses = matchedHouses.slice(0, Math.min(matchedHouses.length, limit) );
+      }
+
       res.send(matchedHouses);
     });
 };
