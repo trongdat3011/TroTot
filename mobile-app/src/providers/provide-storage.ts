@@ -8,7 +8,9 @@ export class ProvideStorage {
     TOKEN = 'accessToken'
     constructor(
         public storage: Storage,
-        public events: Events) { }
+        public events: Events) {
+            this.storage.clear().then(() => console.log('everything is removed!!'))
+        }
 
     favoriteHouse(house): void {
         this.storage.set(house._id.toString(), JSON.stringify(house));

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TrototData {
-  private baseUrl = 'http://localhost:8080/';
+  private baseUrl = 'http://192.168.43.39:8080/';
   constructor(
     public http: Http) {}
   

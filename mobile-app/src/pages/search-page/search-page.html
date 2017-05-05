@@ -16,22 +16,22 @@
   </ion-row>
   <hr>
   <h5>Price Range</h5>
-  <p>{{price.lower}}tr - {{price.upper}}tr</p>
+  <p>{{price.lower}} triệu- {{price.upper}} triệu</p>
   <ion-range dualKnobs="true" max="10" [(ngModel)]="price" color="primary">
   </ion-range>
   <hr>
-  <h5>Rating Range</h5>
-  <p>{{rating.lower}}star(s) - {{rating.upper}}star(s)</p>
-  <ion-range dualKnobs="true" max="5" [(ngModel)]="rating" color="danger">
+  <h5>Limit</h5>
+  <p>{{limit}}</p>
+  <ion-range min="0" max="50" [(ngModel)]="limit" pin="true" color="danger">
   </ion-range>
   <hr>
   <ion-row>
     <ion-col col-7>
-      <h5>Radius Distance</h5>
+     <span style="color: gray; font-size: 150%"> Radius Distance </span>
     </ion-col>
     <ion-col col-5>
       <ion-icon name="ios-remove-circle-outline" color="secondary" (click)="decreaseRadius()"></ion-icon>
-      <span style="color: gray; font-size: 130%">{{radius}}km</span>
+      <span style="color: gray; font-size: 150%"> {{radius}}km </span>
       <ion-icon name="ios-add-circle-outline" color="secondary" (click)="increaseRadius()"></ion-icon>
     </ion-col>
   </ion-row>

@@ -9,6 +9,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 })
 export class HomePage {
   errorMessage: String;
+  loader: any;
   grid: any[];
   constructor(
     public navCtrl: NavController,
@@ -16,31 +17,36 @@ export class HomePage {
     public loadingController: LoadingController,
     public geolocation: Geolocation) { }
 
+  getData(lat:number, lng:number) {
+    this.trototData.getHousesData(lat, lng)
+      .subscribe(
+      houses => {
+        let rowNum = 0;
+        this.grid = [];
+        for (let i = 0; i < houses.length; i += 2) {
+          this.grid.push([]);
+          if (houses[i]) {
+            this.grid[rowNum].push(houses[i]);
+          }
+          if (houses[i + 1]) {
+            this.grid[rowNum].push(houses[i + 1]);
+          }
+          rowNum++;
+        }
+        this.loader.dismiss();
+      });
+  }
   ionViewDidLoad() {
-    let loader = this.loadingController.create({
+    this.loader = this.loadingController.create({
       content: 'Getting data...'
     })
-    loader.present();
+    this.loader.present();
     this.geolocation.getCurrentPosition().then((resp) => {
-      this.trototData.getHousesData(resp.coords.latitude, resp.coords.longitude)
-        .subscribe(
-        houses => {
-          let rowNum = 0;
-          this.grid = [];
-          for (let i = 0; i < houses.length; i += 2) {
-            this.grid.push([]);
-            if (houses[i]) {
-              this.grid[rowNum].push(houses[i]);
-            }
-            if (houses[i + 1]) {
-              this.grid[rowNum].push(houses[i + 1]);
-            }
-            rowNum++;
-          }
-          loader.dismiss();
-        });
+      this.getData(resp.coords.latitude, resp.coords.longitude);
     }).catch((error) => {
       console.log('Error getting location', error);
+      this.loader.dismiss();
+      //this.getData(21.0282368, 105.7739294);
     })
   }
 
