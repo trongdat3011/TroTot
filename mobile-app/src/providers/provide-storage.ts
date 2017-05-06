@@ -6,7 +6,7 @@ import { TrototData } from './trotot-data';
 export class ProvideStorage {
     HAS_LOGGED_IN = 'hasLoggedIn';
     HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
-    TOKEN = 'accessToken'
+    TOKEN = 'accessToken';
     constructor(
         public storage: Storage,
         public events: Events,

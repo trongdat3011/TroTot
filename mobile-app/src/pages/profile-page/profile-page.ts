@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, Events } from 'ionic-angular';
 import { ProvideStorage } from '../../providers/providers';
 import { TrototData } from '../../providers/providers';
-import { Login, FirstPage } from '../pages';
+import { Login, UploadImage } from '../pages';
 @Component({
   selector: 'page-profile-page',
   templateUrl: 'profile-page.html',
@@ -44,4 +44,7 @@ export class ProfilePage {
     toast.present();
   }
 
+  uploadTapped() {
+    this.navCtrl.push(UploadImage);
+  }
 }
