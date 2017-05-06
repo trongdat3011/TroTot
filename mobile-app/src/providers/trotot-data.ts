@@ -8,9 +8,9 @@ import { Observable } from 'rxjs/Observable';
 export class TrototData {
   private baseUrl = 'http://localhost:8080/';
   constructor(
-    public http: Http) {}
-  
-  getHousesData(lat:number, lng:number): Observable<any[]> {
+    public http: Http) { }
+
+  getHousesData(lat: number, lng: number): Observable<any[]> {
     //let headers = new Headers({'X-Airbnb-OAuth-Token': 'ik46pahd49xhxpmia1kze5bk'});
     let options = new RequestOptions();
     let params = new URLSearchParams();
@@ -19,12 +19,12 @@ export class TrototData {
     params.set('limit', '20');
     options.search = params;
     return this.http.get(this.baseUrl + 'api/house', options)
-                    .map(this.extractData)
-                    .catch(this.handleError)
-                    
+      .map(this.extractData)
+      .catch(this.handleError)
+
   }
 
-  searchHouse(location:any, radius:number, limit:number, price:any) {
+  searchHouse(location: any, radius: number, limit: number, price: any) {
     let options = new RequestOptions();
     let params = new URLSearchParams();
     params.set('lat', location.lat.toString());
@@ -32,14 +32,14 @@ export class TrototData {
     params.set('limit', limit.toString());
     params.set('radius', radius.toString());
     params.set('priceLow', (price.lower * 1000000).toString());
-    params.set('priceHigh',(price.upper * 1000000).toString());
+    params.set('priceHigh', (price.upper * 1000000).toString());
     options.search = params;
     return this.http.get(this.baseUrl + 'api/house', options)
-                    .map(this.extractData)
-                    .catch(this.handleError)
+      .map(this.extractData)
+      .catch(this.handleError)
   }
 
-  getReviews(houseId:number): Observable<any[]> {
+  getReviews(houseId: number): Observable<any[]> {
     let options = new RequestOptions();
     let params = new URLSearchParams();
     params.set('client_id', '3092nxybyb0otqw18e8nh5nty');
@@ -48,17 +48,42 @@ export class TrototData {
     params.set('_limit', '20');
     options.search = params;
     return this.http.get(this.baseUrl + 'reviews', options)
-                    .map(this.extractData)
-                    .catch(this.handleError)
+      .map(this.extractData)
+      .catch(this.handleError)
+  }
+
+  login(user: any): Observable<any> {
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    let body ='username=' + user.username + 
+              '&password=' + user.password;
+    let options = new RequestOptions({
+      headers: headers
+    });
+    return this.http.post(this.baseUrl + 'login', body, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  getAccount(token: string): Observable<any> {
+    let headers = new Headers({
+      'x-access-token': token
+    })
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.get(this.baseUrl + 'account', options)
+      .map(this.extractData)
+      .catch(this.handleError);
   }
 
   private extractData(res: Response) {
     let body = res.json();
-    //console.log(body);
     return body;
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';

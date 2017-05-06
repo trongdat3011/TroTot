@@ -15,7 +15,7 @@
 
 <ion-content padding>
   <div class="emptyProfile" *ngIf="!hasLoggedIn">
-    <button ion-button block (click)="openMenu()">
+    <button ion-button block (click)="openLogin()">
       Tap here to login or sign up
     </button>
     <ion-card>
@@ -25,7 +25,25 @@
       </ion-card-content>
     </ion-card>
   </div>
-  <div class="profile" *ngIf="hasLoggedIn">
-  
+  <div class="profile" *ngIf="hasLoggedIn && userInfo">
+    <ion-item class="no-border">
+      <ion-avatar item-right>
+        <img src="{{userInfo.picture_url}}">
+      </ion-avatar>
+      <h2 style="font-size: 170%">{{userInfo.real_name}}</h2>
+      <p style="font-size: 100%">View and edit profile</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-add-circle-outline" item-right></ion-icon>
+      <p style="font-size: 130%">Host Your space</p>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="ios-list-box-outline" item-right></ion-icon>
+      <p style="font-size: 130%">List your space</p>
+    </ion-item>
+    <ion-item class="no-border" (click)="logout()">
+      <ion-icon name="ios-log-out-outline" item-right></ion-icon>
+      <p style="font-size: 130%">Logout</p>
+    </ion-item>
   </div>
 </ion-content>

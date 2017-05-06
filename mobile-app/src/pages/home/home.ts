@@ -43,9 +43,7 @@ export class HomePage {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.getData(resp.coords.latitude, resp.coords.longitude);
     }).catch((error) => {
-      console.log('Error getting location', error);
-      this.loader.dismiss();
-      //this.getData(21.0282368, 105.7739294);
+      this.getData(21.0282368, 105.7739294);
     })
   }
 
