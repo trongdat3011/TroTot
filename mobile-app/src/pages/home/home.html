@@ -7,10 +7,38 @@
 </ion-header>
 
 <ion-content class="main-content">
+  <ion-segment [(ngModel)]="category">
+        <ion-segment-button value="gear">
+            Cho Thuê
+        </ion-segment-button>
+        <ion-segment-button value="clothing">
+            Tìm ở ghép
+        </ion-segment-button>
+    </ion-segment>
   <ion-list>
-    <ion-row *ngFor='let row of grid'>
-      <ion-col col-6 *ngFor='let house of row' (click)="houseTapped($event, house)">
-        <ion-card class='no-padding no-margin'>
+    <ion-row>
+      <ion-col col-6>
+        <ion-card *ngFor='let house of col1' (click)="houseTapped($event, house)" class='no-padding'>
+          <img src='{{house.picture_url}}' style="max-height: 200px"/>
+          <ion-card-content>
+            <ion-row>
+              <ion-col col-7>
+               <span>{{house.price / 1000000}} triệu</span> 
+              </ion-col>
+              <ion-col col-5>
+                <span style="color: green">{{house.distance.toFixed(2)}}km</span>
+              </ion-col>
+            </ion-row>
+            <p> {{house.name}} </p>
+            <ion-item class='no-padding no-margin'>
+              <img src="{{getRatingImg(house.star_rating)}}" item-left/>
+              <p>{{house.reviews_count}} reviews</p>
+            </ion-item>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col col-6>
+        <ion-card class='no-padding' *ngFor='let house of col2' (click)="houseTapped($event, house)">
           <img src='{{house.picture_url}}' style="max-height: 200px"/>
           <ion-card-content>
             <ion-row>

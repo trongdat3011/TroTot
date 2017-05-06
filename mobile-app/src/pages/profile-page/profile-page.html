@@ -14,5 +14,18 @@
 
 
 <ion-content padding>
-
+  <div class="emptyProfile" *ngIf="!hasLoggedIn">
+    <button ion-button block (click)="openMenu()">
+      Tap here to login or sign up
+    </button>
+    <ion-card>
+      <ion-card-header class="my-teams-header">You haven't logged in yet</ion-card-header>
+      <ion-card-content>
+        <p>You need to login so we know who you are</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="profile" *ngIf="hasLoggedIn">
+  
+  </div>
 </ion-content>

@@ -10,7 +10,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 export class HomePage {
   errorMessage: String;
   loader: any;
-  grid: any[];
+  col1: any[];
+  col2: any[];
   constructor(
     public navCtrl: NavController,
     public trototData: TrototData,
@@ -21,17 +22,15 @@ export class HomePage {
     this.trototData.getHousesData(lat, lng)
       .subscribe(
       houses => {
-        let rowNum = 0;
-        this.grid = [];
+        this.col1 = [];
+        this.col2 = [];
         for (let i = 0; i < houses.length; i += 2) {
-          this.grid.push([]);
           if (houses[i]) {
-            this.grid[rowNum].push(houses[i]);
+            this.col1.push(houses[i]);
           }
           if (houses[i + 1]) {
-            this.grid[rowNum].push(houses[i + 1]);
+            this.col2.push(houses[i + 1]);
           }
-          rowNum++;
         }
         this.loader.dismiss();
       });
