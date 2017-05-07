@@ -8,8 +8,11 @@
 
 
 <ion-content padding>
-  <div class="gallery-button" text-center>
+  <div class="gallery-button" text-center (click)="openGallery()">
     <ion-icon name="images"></ion-icon>
     <p>Select Photos</p>
+  </div>
+  <div *ngIf="file">
+    {{file}}
   </div>
 </ion-content>

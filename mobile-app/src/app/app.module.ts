@@ -14,10 +14,7 @@ import { IonicStorageModule } from '@ionic/storage'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from 'angular2-google-maps/core';
-import { File } from '@ionic-native/file';
-import { Transfer } from '@ionic-native/transfer';
-import { FilePath } from '@ionic-native/file-path';
-import { Camera } from '@ionic-native/camera';
+import { ImagePicker } from '@ionic-native/image-picker';
 @NgModule({
   declarations: [
     MyApp,
@@ -67,10 +64,7 @@ import { Camera } from '@ionic-native/camera';
     SocialSharing,
     Geolocation,
     TrototData,
-    File,
-    Transfer,
-    Camera,
-    FilePath,
+    ImagePicker,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
