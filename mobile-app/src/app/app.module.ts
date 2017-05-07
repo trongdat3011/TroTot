@@ -4,7 +4,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, 
-        HouseInfoPage, MapPage, FirstPage, Login, Review, AutocompletePage, SearchResult } from '../pages/pages';
+        HouseInfoPage, MapPage, FirstPage, Login, Review, AutocompletePage, 
+        SearchResult, UploadImage } from '../pages/pages';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DemoAPI, ProvideStorage, TrototData } from '../providers/providers';
@@ -13,6 +14,10 @@ import { IonicStorageModule } from '@ionic/storage'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { File } from '@ionic-native/file';
+import { Transfer } from '@ionic-native/transfer';
+import { FilePath } from '@ionic-native/file-path';
+import { Camera } from '@ionic-native/camera';
 @NgModule({
   declarations: [
     MyApp,
@@ -27,7 +32,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     Login,
     Review,
     AutocompletePage,
-    SearchResult
+    SearchResult,
+    UploadImage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     Login,
     Review,
     AutocompletePage,
-    SearchResult
+    SearchResult,
+    UploadImage
   ],
   providers: [
     DemoAPI,
@@ -60,6 +67,10 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     SocialSharing,
     Geolocation,
     TrototData,
+    File,
+    Transfer,
+    Camera,
+    FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

@@ -10,7 +10,7 @@ export class FirstPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams) {}
-    
+  
   searchPageTapped() {
     this.navCtrl.push(TabsPage);
   }

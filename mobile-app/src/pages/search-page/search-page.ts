@@ -12,7 +12,6 @@ declare var google;
 export class SearchPage {
   useUserLocation: boolean = false;
   price: any = { lower: 0, upper: 10};
-  rating: any = {lower: 0, upper: 5};
   radius: number = 1;
   address: string = "";
   limit: number = 10;
@@ -45,23 +44,12 @@ export class SearchPage {
 
   goToPageSearchResult() {
     this.trototData.searchHouse(this.location, this.radius, this.limit, this.price)
-        .subscribe(
-        houses => {
-          console.log(houses);
-          let rowNum = 0;
-          let grid = [];
-          for (let i = 0; i < houses.length; i += 2) {
-            grid.push([]);
-            if (houses[i]) {
-              grid[rowNum].push(houses[i]);
-            }
-            if (houses[i + 1]) {
-              grid[rowNum].push(houses[i + 1]);
-            }
-            rowNum++;
-          }
-          //this.navCtrl.push(SearchResult, grid);
-        })
+      .subscribe(houses => {
+        let data = {
+          houses: houses,
+          location: this.location
+        }
+        this.navCtrl.push(SearchResult, data)})
   }
 
   showListings() {
