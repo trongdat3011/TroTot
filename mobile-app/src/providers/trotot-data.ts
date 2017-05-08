@@ -78,6 +78,25 @@ export class TrototData {
       .catch(this.handleError);
   }
 
+  uploadImage(file64): Observable<string> {
+    file64 = file64.replace("data:image/jpeg;base64,", "");
+    file64 = file64.replace(/\//g, '%2F');
+    file64 = file64.replace(/=/g, '%3D');
+    file64 = file64.replace(/\+/g, '%2B');
+    let headers = new Headers({
+      'Authorization': 'Client-ID 09f28788142a16a',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    let body = 'image='+file64+'&type=base64';
+    //console.log(body);
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.post('https://api.imgur.com/3/image', body, options)
+        .map(res => res.json().data.link);
+
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body;

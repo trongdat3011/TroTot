@@ -28,14 +28,11 @@ export class ProvideStorage {
     }
 
     getAllFavorites() {
-        return new Promise<any[]>(resolve => {
-            let results = [];
-            this.storage.forEach((data, key, index) => {
+        let results = [];
+        return this.storage.forEach((data, key, index) => {
                 if (key != this.TOKEN && key != this.HAS_LOGGED_IN && key != this.HAS_SEEN_TUTORIAL)
                     results.push(JSON.parse(data));
-            });
-            resolve(results);
-        });
+            }).then(() => results);
     }
 
     hasLoggedIn(): Promise<boolean> {

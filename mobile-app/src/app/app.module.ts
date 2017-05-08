@@ -15,6 +15,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 import { ImagePicker } from '@ionic-native/image-picker';
+import { File } from '@ionic-native/file';
 @NgModule({
   declarations: [
     MyApp,
@@ -65,6 +66,7 @@ import { ImagePicker } from '@ionic-native/image-picker';
     Geolocation,
     TrototData,
     ImagePicker,
+    File,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

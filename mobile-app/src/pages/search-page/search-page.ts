@@ -11,18 +11,19 @@ declare var google;
 })
 export class SearchPage {
   useUserLocation: boolean = false;
-  price: any = { lower: 0, upper: 10};
+  price: any = { lower: 0, upper: 10 };
   radius: number = 1;
   address: string = "";
   limit: number = 10;
-  location:any;
+  location: any;
+  loader: any;
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public loadingController: LoadingController,
     public geolocation: Geolocation,
-    public trototData: TrototData) {}
+    public trototData: TrototData) { }
 
   increaseRadius() {
     if (this.radius < 20)
@@ -34,7 +35,7 @@ export class SearchPage {
       this.radius--;
   }
 
-  showAddressModal () {
+  showAddressModal() {
     let modal = this.modalCtrl.create(AutocompletePage);
     modal.onDidDismiss(data => {
       this.address = data;
@@ -49,42 +50,41 @@ export class SearchPage {
           houses: houses,
           location: this.location
         }
-        this.navCtrl.push(SearchResult, data)})
+        this.loader.dismiss();
+        this.navCtrl.push(SearchResult, data)
+      })
   }
 
   showListings() {
-    let loader = this.loadingController.create({
+    this.loader = this.loadingController.create({
       content: 'Processing...'
     })
     let self = this;
-    loader.present();
+    this.loader.present();
     if (this.useUserLocation) {
       this.geolocation.getCurrentPosition().then(pos => {
         self.location = {
           lat: pos.coords.latitude,
           lng: pos.coords.longitude
         }
-        console.log(self.location);
-        loader.dismiss();
+        //console.log(self.location);
         self.goToPageSearchResult();
-      }); 
+      });
     }
     else {
       let geocoder = new google.maps.Geocoder();
-      geocoder.geocode( { 'address': this.address}, function(results, status) {
-      if (status == 'OK') {
-        self.location = {
-          lat: results[0].geometry.location.lat(),
-          lng: results[0].geometry.location.lng()
+      geocoder.geocode({ 'address': this.address }, function (results, status) {
+        if (status == 'OK') {
+          self.location = {
+            lat: results[0].geometry.location.lat(),
+            lng: results[0].geometry.location.lng()
+          }
+          //console.log(self.location);
+          self.goToPageSearchResult();
+        } else {
+          self.loader.dismiss();
         }
-        console.log(self.location);
-        loader.dismiss();
-        self.goToPageSearchResult();
-      } else {
-        
-        loader.dismiss();
-      }
-    });
+      });
     }
   }
 
