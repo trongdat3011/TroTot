@@ -242,6 +242,14 @@ exports.getHouses = (req, res, next) => {
     });
 };
 
+/**
+ * @api {delete} /api/house/:houseid Delete house by ID
+ * @apiName DeleteHouse
+ * @apiGroup House
+ *
+ * @apiParam {String} houseid Id of the house.
+ * @apiParam {String} token To verify your permission. 
+ */
 exports.deleteHouse = (req, res, next) => {
   House.findById(req.params.houseid, (err, house) => {
     if (err) return res.send(err);
