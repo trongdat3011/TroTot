@@ -97,6 +97,18 @@ export class TrototData {
 
   }
 
+  createNewHouse(data:any, token: string) {
+    let headers = new Headers({
+      'x-access-token': token,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.post(this.baseUrl + 'api/house', data, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
   private extractData(res: Response) {
     let body = res.json();
     return body;
