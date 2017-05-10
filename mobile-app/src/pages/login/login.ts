@@ -1,20 +1,30 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Events } from 'ionic-angular';
 import { Signup, TabsPage } from '../pages';
 import { NgForm } from '@angular/forms';
+import { ProvideStorage } from '../../providers/providers';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class Login {
-  login: {username?: string, password?: string} = {};
+  login: { username?: string, password?: string } = {};
   submitted = false;
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams) {}
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Login');
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public provideStorage: ProvideStorage,
+    public events: Events) {
+    this.events.subscribe('user:login', () => {
+      if (this.navParams.data === true) {
+        this.navParams.data = false;
+        this.navCtrl.pop();
+      }
+      else if (this.navParams.data !== false) {
+        this.navCtrl.push(TabsPage);
+      }
+      this.events.unsubscribe('user:login', () => { });
+    })
   }
 
   singupTapped() {
@@ -24,9 +34,11 @@ export class Login {
   onLogin(loginForm: NgForm) {
     this.submitted = true;
     if (loginForm.valid) {
-      console.log(this.login);
-      this.navCtrl.push(TabsPage);
+      this.provideStorage.login(this.login);
     }
-    
+  }
+
+  ionViewWillLeave() {
+    this.events.unsubscribe('user:login', () => { });
   }
 }

@@ -6,7 +6,6 @@ import { HomePage, ProfilePage, SearchPage, SavedPage } from '../pages';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-
   homePage = HomePage;
   profilePage = ProfilePage;
   searchPage = SearchPage;

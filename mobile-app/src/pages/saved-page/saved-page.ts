@@ -8,7 +8,8 @@ import { HouseInfoPage } from '../pages';
   templateUrl: 'saved-page.html',
 })
 export class SavedPage {
-  favorites:any[];
+  favorites:any[] = [];
+  show:boolean = false;
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -16,9 +17,11 @@ export class SavedPage {
     ) {}
 
   ionViewDidEnter() {
-    this.favorites = [];
+    this.show = false;
     this.provideStorage.getAllFavorites().then(favs => {
       this.favorites = favs;
+      if (favs.length == 0)
+        this.show = true;
     });
   }
 

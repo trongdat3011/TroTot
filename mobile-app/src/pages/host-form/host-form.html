@@ -1,0 +1,62 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Form</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col col-7>
+      <h5>Rent type</h5>
+    </ion-col>
+    <ion-col col-5>
+      <ion-select [(ngModel)]="rent_type">
+        <ion-option value="Cho thuê">Cho Thuê</ion-option>
+        <ion-option value="Ở ghép">Ở ghép</ion-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-7>
+      <h5>People Capacity</h5>
+    </ion-col>
+    <ion-col col-5>
+      <ion-select [(ngModel)]="person_capacity">
+        <ion-option value="1">1</ion-option>
+        <ion-option value="2">2</ion-option>
+        <ion-option value="3">3</ion-option>
+        <ion-option value="4">4</ion-option>
+        <ion-option value="5">5</ion-option>
+        <ion-option value="6">6</ion-option>
+        <ion-option value="7">7</ion-option>
+        <ion-option value="8">8</ion-option>
+      </ion-select>
+    </ion-col>
+  </ion-row>
+  <h5>Set Address</h5>
+  <ion-item>
+    <textarea type="text" [(ngModel)]="public_address"></textarea>
+  </ion-item>
+  <h5>Name of your listing</h5>
+  <ion-item>
+    <textarea type="text" [(ngModel)]="name"></textarea>
+  </ion-item>
+  <h5>Describe your space</h5>
+  <ion-item>
+    <textarea type="text" [(ngModel)]="description"></textarea>
+  </ion-item>
+  <h5>Phone number</h5>
+  <ion-item>
+    <textarea type="text" [(ngModel)]="phone_number"></textarea>
+  </ion-item>
+  <h5>Price</h5>
+  <p>{{superPrice / 10}} triệu VND</p>
+  <ion-range min="0" max="200" [(ngModel)]="superPrice" color="danger">
+  </ion-range>
+  <button ion-button block (click)="onSubmit()" style="margin-top: 7%">
+    Submit
+  </button>
+</ion-content>

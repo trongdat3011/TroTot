@@ -177,14 +177,14 @@ exports.changeHouse = (req, res, next) => {
 };
 
 /**
- * @api {get} /api/house/:houseid Get specific house info.
- * @apiName GetOneHouse
+ * @api {get} /api/house/:userid Get houses posted by userid
+ * @apiName GetHouseFromUser
  * @apiGroup House
  *
- * @apiParam {String} houseid ID of the house you want to change.
+ * @apiParam {String} userid ID of the poster.
  */
-exports.getHouseFromId = (req, res, next) => {
-  House.findById(req.params.houseid)
+exports.getHousePostedByUser = (req, res, next) => {
+  House.find({ primary_host: req.params.userid })
     .populate('primary_host', 'username real_name has_profile_pic picture_url')
     .exec( (err, house) => {
       if (err) return res.send(err);

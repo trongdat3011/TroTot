@@ -1,14 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { Events } from 'ionic-angular';
+import { Events, ToastController } from 'ionic-angular';
+import { TrototData } from './trotot-data';
 @Injectable()
 export class ProvideStorage {
     HAS_LOGGED_IN = 'hasLoggedIn';
     HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
-    TOKEN = 'accessToken'
+    TOKEN = 'accessToken';
     constructor(
         public storage: Storage,
-        public events: Events) { }
+        public events: Events,
+        public trototData: TrototData,
+        public toastController: ToastController) {
+        //this.storage.clear().then(() => console.log('everything is removed!!'))
+    }
 
     favoriteHouse(house): void {
         this.storage.set(house._id.toString(), JSON.stringify(house));
@@ -23,23 +28,39 @@ export class ProvideStorage {
     }
 
     getAllFavorites() {
-        return new Promise<any[]>(resolve => {
-            let results = [];
-            this.storage.forEach((data, key, index) => {
-                results.push(JSON.parse(data));
-            });
-            resolve(results);
-        }); 
+        let results = [];
+        return this.storage.forEach((data, key, index) => {
+                if (key != this.TOKEN && key != this.HAS_LOGGED_IN && key != this.HAS_SEEN_TUTORIAL)
+                    results.push(JSON.parse(data));
+            }).then(() => results);
     }
 
     hasLoggedIn(): Promise<boolean> {
         return this.storage.get(this.HAS_LOGGED_IN).then(value => value === true);
     }
 
-    login(token): void {
-        this.storage.set(this.HAS_LOGGED_IN, true);
-        this.storage.set(this.TOKEN, token);
-        this.events.publish('user:login');
+    login(user): void {
+        this.trototData.login(user).subscribe(info => {
+            if (!info.success) {
+                let toast = this.toastController.create({
+                    message: 'Your username or password is incorrect!',
+                    duration: 2000,
+                    position: 'bottom'
+                });
+                toast.present();
+            }
+            else {
+                let toast = this.toastController.create({
+                    message: 'You have logged in!',
+                    duration: 2000,
+                    position: 'bottom'
+                });
+                toast.present();
+                this.storage.set(this.HAS_LOGGED_IN, true);
+                this.storage.set(this.TOKEN, info.token);
+                this.events.publish('user:login');
+            }
+        });
     }
 
     logout(): void {

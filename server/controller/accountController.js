@@ -46,11 +46,13 @@ exports.register = (req, res, next) => {
  *     }
  */
 exports.login = (req, res, next) => {
-  User.findOne(req.body).select('_id username').exec((err, user) => {
+  User.findOne({ username: req.body.username, password: req.body.password })
+  .select('_id username').exec((err, user) => {
     if (err) return res.send(err);
     if (!user) {
       return res.json({ success: false, message: 'Wrong username/password' });
     }
+    console.log(user);
     const providedInfo = {
       _id: user._id,
       username: user.username
@@ -107,7 +109,7 @@ exports.getInfo = (req, res, next) => {
  * @apiParam {String} email Your email.
  * @apiParam {String} real_name Your full name.
  * @apiParam {String} picture_url Your profile picture url.
- * 
+ *
  * @apiSuccess {String} message Well, a message.
  *
  * @apiSuccessExample Success-Response:
