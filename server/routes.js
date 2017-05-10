@@ -11,7 +11,7 @@ const review = require('./model/review/router');
 
 const adminRouter = new Router();
 adminRouter
-  .use(tokenChecker, adminChecker)
+  // .use(tokenChecker, adminChecker)
   .use('/house', house)
   .use('/review', review)
   .use('/user', user);

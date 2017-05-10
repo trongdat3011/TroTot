@@ -126,6 +126,8 @@ exports.postReview = (req, res, next) => {
 exports.postHouse = (req, res, next) => {
   const newHouse = Object.assign({}, req.body);
   newHouse.primary_host = req.decoded._id;
+  if (typeof newHouse.pictures_url === 'string')
+    newHouse.pictures_url = JSON.parse(newHouse.pictures_url);
   const house = new House(newHouse);
   house.save( (err) => {
     if (err) return res.send(err);
