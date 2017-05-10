@@ -27,11 +27,11 @@ Group members
 
 1.[Trần Trọng Đạt (co-leader)](https://github.com/trongdat3011)
 
-2.[Chu Viết Hiếu (co-leader)](https://github.com/hieua1)
+2.[Chu Viết Hiếu (co-leader)](https://github.com/chuhieu1)
 
 3.[Bùi Đức Thịnh (co-leader)](https://github.com/thinh2)
 
-4.[Đặng Thái Tuệ (co-leader)](https://github.com/meodorewan)
+4.[Đặng Thái Tuệ (co-leader)](https://github.com/hieua1)
 
 5.[Đoàn Văn Việt (U L T I M A T E L E A D E R)](https://github.com/vietdoan)
 
