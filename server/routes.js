@@ -11,7 +11,7 @@ const review = require('./model/review/router');
 
 const adminRouter = new Router();
 adminRouter
-  // .use(tokenChecker, adminChecker)
+  .use(tokenChecker, adminChecker)
   .use('/house', house)
   .use('/review', review)
   .use('/user', user);
@@ -23,7 +23,8 @@ apiRouter
   .post('/house', tokenChecker, apiController.postHouse)
   .get('/house', apiController.getHouses)
   .get('/house/:userid', apiController.getHousePostedByUser)
-  .put('/house/:houseid', tokenChecker, apiController.changeHouse);
+  .put('/house/:houseid', tokenChecker, apiController.changeHouse)
+  .delete('/house/:houseid', tokenChecker, apiController.deleteHouse);
 
 const accountRouter = new Router();
 accountRouter
