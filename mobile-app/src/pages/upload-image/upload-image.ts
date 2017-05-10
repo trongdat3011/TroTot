@@ -3,6 +3,7 @@ import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { File } from '@ionic-native/file';
 import { TrototData } from '../../providers/providers';
+import { HostForm } from '../pages';
 declare var cordova;
 @Component({
   selector: 'page-upload-image',
@@ -46,14 +47,15 @@ export class UploadImage {
           this.trototData.uploadImage(file).subscribe(link => {
             result.push(link);
             if (result.length == l) {
-              
               loader.dismiss();
+              this.navCtrl.push(HostForm, result);
             }
           })
         })
       })
       .catch(err => {
         loader.dismiss();
+        this.navCtrl.push(HostForm);
       });
   }
 

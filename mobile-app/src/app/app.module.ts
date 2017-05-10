@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 
 import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, 
         HouseInfoPage, MapPage, FirstPage, Login, Review, AutocompletePage, 
-        SearchResult, UploadImage } from '../pages/pages';
+        SearchResult, UploadImage, HostForm } from '../pages/pages';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DemoAPI, ProvideStorage, TrototData } from '../providers/providers';
@@ -31,7 +31,8 @@ import { File } from '@ionic-native/file';
     Review,
     AutocompletePage,
     SearchResult,
-    UploadImage
+    UploadImage,
+    HostForm
   ],
   imports: [
     BrowserModule,
@@ -55,7 +56,8 @@ import { File } from '@ionic-native/file';
     Review,
     AutocompletePage,
     SearchResult,
-    UploadImage
+    UploadImage,
+    HostForm
   ],
   providers: [
     DemoAPI,
