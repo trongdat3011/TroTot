@@ -241,3 +241,15 @@ exports.getHouses = (req, res, next) => {
       res.send(matchedHouses);
     });
 };
+
+exports.deleteHouse = (req, res, next) => {
+  House.findById(req.params.houseid, (err, house) => {
+    if (err) return res.send(err);
+    console.log(req.decoded._id);
+    if (req.decoded._id != house.primary_host) return res.json( { message: 'No permission' });
+    house.remove( (err) => {
+      if (err) return res.send(err);
+      res.json({ message: 'Successful~' });
+    });
+  });
+};
