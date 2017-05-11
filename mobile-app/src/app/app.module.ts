@@ -5,7 +5,7 @@ import { MyApp } from './app.component';
 
 import { HomePage, ProfilePage, SearchPage, SavedPage, TabsPage, 
         HouseInfoPage, MapPage, FirstPage, Login, Review, AutocompletePage, 
-        SearchResult, UploadImage } from '../pages/pages';
+        SearchResult, UploadImage, HostForm, Signup } from '../pages/pages';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { DemoAPI, ProvideStorage, TrototData } from '../providers/providers';
@@ -14,10 +14,8 @@ import { IonicStorageModule } from '@ionic/storage'
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Geolocation } from '@ionic-native/geolocation';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { ImagePicker } from '@ionic-native/image-picker';
 import { File } from '@ionic-native/file';
-import { Transfer } from '@ionic-native/transfer';
-import { FilePath } from '@ionic-native/file-path';
-import { Camera } from '@ionic-native/camera';
 @NgModule({
   declarations: [
     MyApp,
@@ -33,7 +31,9 @@ import { Camera } from '@ionic-native/camera';
     Review,
     AutocompletePage,
     SearchResult,
-    UploadImage
+    UploadImage,
+    HostForm,
+    Signup
   ],
   imports: [
     BrowserModule,
@@ -57,7 +57,9 @@ import { Camera } from '@ionic-native/camera';
     Review,
     AutocompletePage,
     SearchResult,
-    UploadImage
+    UploadImage,
+    HostForm,
+    Signup
   ],
   providers: [
     DemoAPI,
@@ -67,10 +69,8 @@ import { Camera } from '@ionic-native/camera';
     SocialSharing,
     Geolocation,
     TrototData,
+    ImagePicker,
     File,
-    Transfer,
-    Camera,
-    FilePath,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

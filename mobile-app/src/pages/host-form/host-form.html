@@ -1,0 +1,57 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Form</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding class="getting-started">
+  <ion-list inset>
+    <ion-item>
+      <ion-label floating>Name of your listing</ion-label>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Describe your space</ion-label>
+      <ion-textarea type="text" [(ngModel)]="description"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Phone Number</ion-label>
+      <ion-input type="text" [(ngModel)]="phone_number"></ion-input>
+    </ion-item>
+    <h6 style="color: gray">Rent type</h6>
+    <ion-item>
+      <ion-select [(ngModel)]="rent_type">
+        <ion-option value="Cho thuê">Cho Thuê</ion-option>
+        <ion-option value="Ở ghép">Ở ghép</ion-option>
+      </ion-select>
+    </ion-item>
+    <h6 style="color: gray">People Capacity</h6>
+    <ion-item>
+      <ion-select [(ngModel)]="person_capacity">
+        <ion-option value="1">1</ion-option>
+        <ion-option value="2">2</ion-option>
+        <ion-option value="3">3</ion-option>
+        <ion-option value="4">4</ion-option>
+        <ion-option value="5">5</ion-option>
+        <ion-option value="6">6</ion-option>
+        <ion-option value="7">7</ion-option>
+        <ion-option value="8">8</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" [(ngModel)]="public_address"></ion-input>
+    </ion-item>
+    <h6 style="color: gray">Price</h6>
+    <p>{{superPrice / 10}} triệu VND</p>
+    <ion-range min="0" max="200" [(ngModel)]="superPrice" color="danger">
+    </ion-range>
+  </ion-list>
+  <button ion-button block (click)="onSubmit()" style="margin-top: 7%">
+    Submit
+  </button>
+
+</ion-content>

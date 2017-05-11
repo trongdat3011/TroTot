@@ -126,6 +126,8 @@ exports.postReview = (req, res, next) => {
 exports.postHouse = (req, res, next) => {
   const newHouse = Object.assign({}, req.body);
   newHouse.primary_host = req.decoded._id;
+  if (typeof newHouse.pictures_url === 'string')
+    newHouse.pictures_url = JSON.parse(newHouse.pictures_url);
   const house = new House(newHouse);
   house.save( (err) => {
     if (err) return res.send(err);
@@ -238,4 +240,24 @@ exports.getHouses = (req, res, next) => {
 
       res.send(matchedHouses);
     });
+};
+
+/**
+ * @api {delete} /api/house/:houseid Delete house by ID
+ * @apiName DeleteHouse
+ * @apiGroup House
+ *
+ * @apiParam {String} houseid Id of the house.
+ * @apiParam {String} token To verify your permission. 
+ */
+exports.deleteHouse = (req, res, next) => {
+  House.findById(req.params.houseid, (err, house) => {
+    if (err) return res.send(err);
+    console.log(req.decoded._id);
+    if (req.decoded._id != house.primary_host) return res.json( { message: 'No permission' });
+    house.remove( (err) => {
+      if (err) return res.send(err);
+      res.json({ message: 'Successful~' });
+    });
+  });
 };

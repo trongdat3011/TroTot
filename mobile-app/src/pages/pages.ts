@@ -12,3 +12,4 @@ export * from './review/review';
 export * from './autocomplete-page/autocomplete-page';
 export * from './search-result/search-result';
 export * from './upload-image/upload-image';
+export * from './host-form/host-form';

@@ -23,7 +23,8 @@ apiRouter
   .post('/house', tokenChecker, apiController.postHouse)
   .get('/house', apiController.getHouses)
   .get('/house/:userid', apiController.getHousePostedByUser)
-  .put('/house/:houseid', tokenChecker, apiController.changeHouse);
+  .put('/house/:houseid', tokenChecker, apiController.changeHouse)
+  .delete('/house/:houseid', tokenChecker, apiController.deleteHouse);
 
 const accountRouter = new Router();
 accountRouter

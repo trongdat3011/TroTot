@@ -1,18 +1,67 @@
-<!--
-  Generated template for the Signup page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>signup</ion-title>
+    <ion-title>Signup</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding>
+  <div class="logo">
+    <img src="assets/icon/user.png" alt="User logo">
+  </div>
 
+  <form #signupForm="ngForm" novalidate>
+    <ion-list no-lines>
+      <ion-item>
+        <ion-label style='font-size: 120%' stacked color="primary">Username</ion-label>
+        <ion-input [(ngModel)]="signup.username" name="username" type="text" #username="ngModel" spellcheck="false" autocapitalize="off"
+          required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="username.valid || submitted == false" color="danger" padding-left>
+        Username is required
+      </p>
+
+      <ion-item>
+        <ion-label style='font-size: 120%' stacked color="primary">Password</ion-label>
+        <ion-input [(ngModel)]="signup.password" name="password" type="password" #password="ngModel" required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="password.valid || submitted == false" color="danger" padding-left>
+        Password is required
+      </p>
+
+      <ion-item>
+        <ion-label style='font-size: 120%' stacked color="primary">Phone</ion-label>
+        <ion-input [(ngModel)]="signup.phone" name="phone" type="text" #phone="ngModel" spellcheck="false" autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="phone.valid || submitted == false" color="danger" padding-left>
+        Phone number is required
+      </p>
+
+      <ion-item>
+        <ion-label style='font-size: 120%' stacked color="primary">Email</ion-label>
+        <ion-input [(ngModel)]="signup.email" name="email" type="text" #email="ngModel" spellcheck="false" autocapitalize="off" required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="email.valid || submitted == false" color="danger" padding-left>
+        Email is required
+      </p>
+
+      <ion-item>
+        <ion-label style='font-size: 120%' stacked color="primary">Real Name</ion-label>
+        <ion-input [(ngModel)]="signup.real_name" name="real_name" type="text" #real_name="ngModel" spellcheck="false" autocapitalize="off"
+          required>
+        </ion-input>
+      </ion-item>
+      <p ion-text [hidden]="real_name.valid || submitted == false" color="danger" padding-left>
+        Real name is required
+      </p>
+
+    </ion-list>
+
+  </form>
+  <button ion-button block (click)="onSubmit(signupForm)" style="margin-top: 7%">
+        Signup
+  </button>
 </ion-content>

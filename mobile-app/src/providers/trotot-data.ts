@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TrototData {
-  private baseUrl = 'http://192.168.0.103:8080/';
+  private baseUrl = 'http://192.168.1.6:8080/';
   constructor(
     public http: Http) { }
 
@@ -56,8 +56,8 @@ export class TrototData {
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-    let body ='username=' + user.username + 
-              '&password=' + user.password;
+    let body = 'username=' + user.username +
+      '&password=' + user.password;
     let options = new RequestOptions({
       headers: headers
     });
@@ -75,6 +75,50 @@ export class TrototData {
     })
     return this.http.get(this.baseUrl + 'account', options)
       .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  uploadImage(file64): Observable<string> {
+    file64 = file64.replace("data:image/jpeg;base64,", "");
+    file64 = file64.replace(/\//g, '%2F');
+    file64 = file64.replace(/=/g, '%3D');
+    file64 = file64.replace(/\+/g, '%2B');
+    let headers = new Headers({
+      'Authorization': 'Client-ID 09f28788142a16a',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    let body = 'image=' + file64 + '&type=base64';
+    //console.log(body);
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.post('https://api.imgur.com/3/image', body, options)
+      .map(res => res.json().data.link);
+
+  }
+
+  createNewHouse(data: any, token: string): Observable<any> {
+    let headers = new Headers({
+      'x-access-token': token,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.post(this.baseUrl + 'api/house', data, options)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  register(data: string): Observable<any> {
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.post(this.baseUrl + 'register', data, options)
+      .map(res => res.json().message)
       .catch(this.handleError);
   }
 
