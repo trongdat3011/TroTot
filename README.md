@@ -19,10 +19,15 @@ To get the app running
 cd mobile-app
 npm install && ionic serve
 ```
-To get the server running, access server/ for more details.
+To get the server running, make sure in your server/config.js 
+```
+config.mongo.test = true;
+```
+Then run the following commands chain
 ```
 npm install && npm run import && npm run genapi && npm run dev
 ```
+Access server/ for more details.
 
 
 
