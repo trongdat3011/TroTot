@@ -53,7 +53,7 @@ export class ListingsPage {
 
   trashTapped(houseId: string) {
     let confirm = this.alertController.create({
-      title: 'Unfollow?',
+      title: 'Delete?',
       message: 'Are you sure that you want to permanently delete the selected house?',
       buttons: [
         {
