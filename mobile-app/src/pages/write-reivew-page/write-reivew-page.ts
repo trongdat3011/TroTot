@@ -10,12 +10,14 @@ export class WriteReivewPage {
   comment: string = "";
   houseId: string = "";
   token: string;
+  tarBarElement: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public provideStorage: ProvideStorage,
     public trototData: TrototData,
     public toastController: ToastController) {
+    this.tarBarElement = document.querySelector('.tabbar.show-tabbar');
     this.houseId = this.navParams.data;
     this.provideStorage.getToken().then(token => this.token = token);
   }
@@ -39,5 +41,13 @@ export class WriteReivewPage {
     toast.present();
     this.navCtrl.pop();
 
+  }
+
+  ionViewWillEnter() {
+    this.tarBarElement.style.display = 'none';
+  }
+
+  ionViewWillLeave() {
+    this.tarBarElement.style.display = 'flex';
   }
 }

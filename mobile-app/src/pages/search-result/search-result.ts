@@ -19,7 +19,6 @@ export class SearchResult {
   ionViewCanEnter() {
     let houses = this.navParams.data.houses;
     let location = this.navParams.data.location;
-    let rowNum = 0;
     this.col1 = [];
     this.col2 = [];
     for (let i = 0; i < houses.length; i += 2) {
