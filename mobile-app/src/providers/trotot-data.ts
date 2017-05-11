@@ -56,8 +56,8 @@ export class TrototData {
     let headers = new Headers({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-    let body ='username=' + user.username + 
-              '&password=' + user.password;
+    let body = 'username=' + user.username +
+      '&password=' + user.password;
     let options = new RequestOptions({
       headers: headers
     });
@@ -87,17 +87,17 @@ export class TrototData {
       'Authorization': 'Client-ID 09f28788142a16a',
       'Content-Type': 'application/x-www-form-urlencoded'
     });
-    let body = 'image='+file64+'&type=base64';
+    let body = 'image=' + file64 + '&type=base64';
     //console.log(body);
     let options = new RequestOptions({
       headers: headers
     })
     return this.http.post('https://api.imgur.com/3/image', body, options)
-        .map(res => res.json().data.link);
+      .map(res => res.json().data.link);
 
   }
 
-  createNewHouse(data:any, token: string) {
+  createNewHouse(data: any, token: string): Observable<any> {
     let headers = new Headers({
       'x-access-token': token,
       'Content-Type': 'application/x-www-form-urlencoded'
@@ -109,6 +109,19 @@ export class TrototData {
       .map(this.extractData)
       .catch(this.handleError);
   }
+
+  register(data: string): Observable<any> {
+    let headers = new Headers({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    })
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.post(this.baseUrl + 'register', data, options)
+      .map(res => res.json().message)
+      .catch(this.handleError);
+  }
+
   private extractData(res: Response) {
     let body = res.json();
     return body;

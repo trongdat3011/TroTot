@@ -27,7 +27,7 @@ export class Login {
     })
   }
 
-  singupTapped() {
+  signupTapped() {
     this.navCtrl.push(Signup);
   }
 
