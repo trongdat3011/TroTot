@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { LoadingController, NavController, NavParams } from 'ionic-angular';
-import { DemoAPI } from '../../providers/providers';
+import { TrototData } from '../../providers/providers';
 @Component({
   selector: 'page-review',
   templateUrl: 'review.html',
@@ -12,19 +12,20 @@ export class Review {
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingController: LoadingController,
-    public demoAPI: DemoAPI) {
+    public trototData: TrototData) {
     this.tarBarElement = document.querySelector('.tabbar.show-tabbar');
   }
 
   ionViewCanEnter() {
     let houseId = this.navParams.data;
-    console.log(houseId);
+    //console.log(houseId);
     let loader = this.loadingController.create({
       content: 'Getting Reviews...'
     });
     loader.present()
-    this.demoAPI.getReviews(houseId).subscribe(reviews => {
+    this.trototData.getReviews(houseId).subscribe(reviews => {
       this.reviews = reviews;
+      //console.log(reviews);
       loader.dismiss();
     })
   }

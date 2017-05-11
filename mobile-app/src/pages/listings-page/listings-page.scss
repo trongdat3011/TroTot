@@ -1,0 +1,33 @@
+page-listings-page {
+    ion-item {
+        background-color: #fff;
+        p {
+            font-size: 0.7em !important;
+            color: #387ef5 !important;
+        }
+    }
+    ion-card {
+        background-color: #fff;
+        width: 100% !important;
+        position: relative;
+        margin-top: 10px !important;
+    }
+    ion-card-content {
+        img {
+            height: 40%;
+            width: 40%;
+        }
+        span {
+            font-weight: bold;
+        }
+    }
+    ion-icon {
+        font-size: 150%;
+    }
+    .no-padding {
+        padding: 0px !important;
+    }
+    .no-margin {
+        margin: 0px !important;
+    }
+}

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, Events } from 'ionic-angular';
 import { ProvideStorage } from '../../providers/providers';
 import { TrototData } from '../../providers/providers';
-import { Login, UploadImage } from '../pages';
+import { Login, UploadImage, ListingsPage } from '../pages';
 @Component({
   selector: 'page-profile-page',
   templateUrl: 'profile-page.html',
@@ -10,6 +10,7 @@ import { Login, UploadImage } from '../pages';
 export class ProfilePage {
   hasLoggedIn: boolean = true;
   userInfo: any;
+  token: any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -23,6 +24,7 @@ export class ProfilePage {
       this.hasLoggedIn = val;
       if (val) {
         this.provideStorage.getToken().then(token => {
+          this.token = token;
           this.trototData.getAccount(token).subscribe(info => this.userInfo = info);
         })
       }
@@ -42,6 +44,15 @@ export class ProfilePage {
       position: 'bottom'
     });
     toast.present();
+  }
+
+  listingsTapped() {
+    let user = {
+      token: this.token,
+      userId: this.userInfo._id
+    }
+  
+    this.navCtrl.push(ListingsPage, user);
   }
 
   uploadTapped() {

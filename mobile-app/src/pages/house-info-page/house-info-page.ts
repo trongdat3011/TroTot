@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform, NavController, NavParams, AlertController, ToastController, LoadingController, ActionSheetController } from 'ionic-angular';
 import { ProvideStorage } from '../../providers/providers';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { MapPage, Review } from '../pages';
+import { MapPage, Review, WriteReivewPage } from '../pages';
 declare var window;
 @Component({
   selector: 'page-house-info-page',
@@ -12,6 +12,7 @@ export class HouseInfoPage {
   house: any;
   isFollowing = false;
   tarBarElement: any;
+  isLogin = false;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -32,6 +33,7 @@ export class HouseInfoPage {
       this.house.pictures_url = this.house.pictures_url.slice(0, 5);
     this.provideStorage.isFavoriteHouse(this.house._id)
       .then(val => this.isFollowing = val);
+    this.provideStorage.hasLoggedIn().then(val => this.isLogin = val);
   }
 
   ionViewWillEnter() {
@@ -126,5 +128,9 @@ export class HouseInfoPage {
 
   reviewTapped($event: Event, houseId: number) {
     this.navCtrl.push(Review, houseId);
+  }
+
+  writeReviewTapped($event: Event, houseId) {
+    this.navCtrl.push(WriteReivewPage, houseId);
   }
 }

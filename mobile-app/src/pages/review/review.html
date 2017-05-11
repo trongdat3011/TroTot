@@ -13,13 +13,13 @@
 
       <ion-item>
         <ion-avatar item-left>
-          <img src="{{review.author.picture_url}}">
+          <img src="{{review.userPosted.picture_url}}">
         </ion-avatar>
-        <h2>{{review.author.first_name}}</h2>
-        <p>{{review.created_at}}</p>
+        <h2>{{review.userPosted.real_name}}</h2>
+        <p>{{review.createdDate}}</p>
       </ion-item>
       <ion-card-content>
-        <p style="color: gray">{{review.comments}}</p>
+        <p style="color: gray">{{review.comment}}</p>
       </ion-card-content>
     </ion-card>
   </ion-list>

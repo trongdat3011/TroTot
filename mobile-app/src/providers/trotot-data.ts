@@ -42,12 +42,9 @@ export class TrototData {
   getReviews(houseId: number): Observable<any[]> {
     let options = new RequestOptions();
     let params = new URLSearchParams();
-    params.set('client_id', '3092nxybyb0otqw18e8nh5nty');
-    params.set('listing_id', houseId.toString());
-    params.set('role', 'all');
-    params.set('_limit', '20');
+    params.set('limit', "20");
     options.search = params;
-    return this.http.get(this.baseUrl + 'reviews', options)
+    return this.http.get(this.baseUrl + 'api/review/' + houseId, options)
       .map(this.extractData)
       .catch(this.handleError)
   }
@@ -120,6 +117,37 @@ export class TrototData {
     return this.http.post(this.baseUrl + 'register', data, options)
       .map(res => res.json().message)
       .catch(this.handleError);
+  }
+
+  getHousesByUserId(userId: string): Observable<any[]> {
+    return this.http.get(this.baseUrl + 'api/house/' + userId)
+      .map(this.extractData)
+      .catch(this.handleError);
+  }
+
+  deleteHouse(token, houseId): Observable<string> {
+    let headers = new Headers({
+      'x-access-token': token,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.delete(this.baseUrl + 'api/house/' + houseId, options)
+      .map(res => res.json().message)
+      .catch(this.handleError);
+  }
+
+  createReview(houseId, token, data): Observable<string> {
+    let headers = new Headers({
+      'x-access-token': token,
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    let options = new RequestOptions({
+      headers: headers
+    })
+    return this.http.post(this.baseUrl + 'api/review/' + houseId, data, options)
+      .map(res => res.json().message);
   }
 
   private extractData(res: Response) {

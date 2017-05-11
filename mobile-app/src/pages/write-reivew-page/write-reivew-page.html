@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Write a Review</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-item>
+    <ion-label floating>Review</ion-label>
+    <ion-textarea type="text" [(ngModel)]="comment"></ion-textarea>
+  </ion-item>
+  <ion-row>
+    <ion-col col-6>
+      <ion-select [(ngModel)]="star_rating" style="margin: 0; max-width: 60%; padding-top: 0">
+        <ion-option value="0">0</ion-option>
+        <ion-option value="1">1</ion-option>
+        <ion-option value="2">2</ion-option>
+        <ion-option value="3">3</ion-option>
+        <ion-option value="4">4</ion-option>
+        <ion-option value="5">5</ion-option>
+      </ion-select>
+    </ion-col>
+    <ion-col col-6>
+        <img src="{{getRatingImg(star_rating)}}"/>
+    </ion-col>
+  </ion-row>
+  <button ion-button block (click)="onSubmit()" style="margin-top: 7%">
+        Submit
+  </button>
+</ion-content>

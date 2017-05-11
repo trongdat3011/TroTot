@@ -1,0 +1,53 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Listings Page</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-row>
+    <ion-col col-6>
+      <ion-card *ngFor='let house of col1' class='no-padding'>
+        <img src='{{house.picture_url}}' (click)="houseTapped($event, house)" style="max-height: 200px" />
+        <ion-card-content>
+          <ion-row>
+            <ion-col col-9>
+              <span>{{house.price / 1000000}} triệu</span>
+            </ion-col>
+            <ion-col col-3>
+              <ion-icon name="ios-trash-outline" (click)="trashTapped(house._id)"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <p> {{house.name}} </p>
+          <ion-item class='no-padding no-margin'>
+            <img src="{{getRatingImg(house.star_rating)}}" item-left/>
+            <p>{{house.reviews_count}} reviews</p>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col col-6>
+      <ion-card class='no-padding' *ngFor='let house of col2' (click)="houseTapped($event, house)">
+        <img src='{{house.picture_url}}' style="max-height: 200px" />
+        <ion-card-content>
+          <ion-row>
+            <ion-col col-9>
+              <span>{{house.price / 1000000}} triệu</span>
+            </ion-col>
+            <ion-col col-3>
+              <ion-icon name="ios-trash-outline" (click)="trashTapped(house._id)"></ion-icon>
+            </ion-col>
+          </ion-row>
+          <p> {{house.name}} </p>
+          <ion-item class='no-padding no-margin'>
+            <img src="{{getRatingImg(house.star_rating)}}" item-left/>
+            <p>{{house.reviews_count}} reviews</p>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

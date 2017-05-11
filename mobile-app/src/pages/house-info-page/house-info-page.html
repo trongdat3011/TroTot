@@ -80,6 +80,10 @@
     Read reviews
     <ion-icon md="ios-arrow-forward" item-right style="color: gray"></ion-icon>
   </button>
+  <button ion-item *ngIf="isLogin" (click)="writeReviewTapped($event, house._id)" icon-right>
+    Review this house
+    <ion-icon md="ios-arrow-forward" item-right style="color: gray"></ion-icon>
+  </button>
   <ion-item (click)="callMenu()">
     <ion-thumbnail item-left>
       <img src="{{house.primary_host.picture_url}}">
