@@ -10,16 +10,20 @@ Also serve as a group project for [Selected Topics on Technology](http://uet.vnu
 
 Getting started
 =============
-
+First, install [Node.js](https://nodejs.org). Then, install the latest Cordova and Ionic command-line tools in your terminal
 ```
-insert commands to run the app
+npm install -g cordova ionic
 ```
-To get the app running
-
+To get the app running 
+```
+cd mobile-app
+npm install && ionic serve
+```
+To get the server running, access server/ for more details.
 ```
 npm install && npm run import && npm run genapi && npm run dev
 ```
-To get the server running, access server/ for more details.
+
 
 
 Group members
@@ -33,7 +37,7 @@ Group members
 
 4.[Đặng Thái Tuệ (co-leader)](https://github.com/hieua1)
 
-5.[Đoàn Văn Việt (U L T I M A T E L E A D E R)](https://github.com/vietdoan)
+5.[Đoàn Văn Việt (member)](https://github.com/vietdoan)
 
 
 
